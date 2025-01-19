@@ -1,4 +1,4 @@
 venv/
 logs/
 AMR/
-preprocessing/amr/
+preprocessing/amr/*
