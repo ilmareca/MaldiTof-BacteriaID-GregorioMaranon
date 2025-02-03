@@ -1,4 +1,12 @@
 venv/
-logs/
-AMR/
-preprocessing/amr/*
+1_data_cleaning/logs/
+1_data_cleaning/scripts/HGUGM/1_4_clean_amr_csv/outputs/
+2_data_statistics/logs/
+3_data_preprocessing/logs/
+3_data_preprocessing/scripts/outputs/
+3_data_preprocessing/scripts/__pycache__/
+4_feature_extraction/scripts/isomap/figures/
+4_feature_extraction/scripts/umap/figures/
+4_feature_extraction/scripts/lle/figures/
+4_feature_extraction/scripts/pca/figures/
+4_feature_extraction/scripts/tsne/figures/

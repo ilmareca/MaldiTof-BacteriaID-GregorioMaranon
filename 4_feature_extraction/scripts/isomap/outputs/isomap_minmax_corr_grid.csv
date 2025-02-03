@@ -1,0 +1,21 @@
+Antibiotic,n_neighbors,threshold,silhouette_score,file_name
+Amp/Sulbactam Interpretación,2,0.05,-0.034187674230700155,isomap_Amp_Sulbactam_Interpretación_n2_thresh0.05.png
+Amp/Sulbactam Interpretación,5,0.05,-0.04081261840449605,isomap_Amp_Sulbactam_Interpretación_n5_thresh0.05.png
+Amp/Sulbactam Interpretación,10,0.05,-0.0412942406078207,isomap_Amp_Sulbactam_Interpretación_n10_thresh0.05.png
+Amp/Sulbactam Interpretación,15,0.05,-0.04131399236088935,isomap_Amp_Sulbactam_Interpretación_n15_thresh0.05.png
+Amp/Sulbactam Interpretación,30,0.05,-0.04369460278980343,isomap_Amp_Sulbactam_Interpretación_n30_thresh0.05.png
+Amp/Sulbactam Interpretación,2,0.1,-0.03523317634758863,isomap_Amp_Sulbactam_Interpretación_n2_thresh0.1.png
+Amp/Sulbactam Interpretación,5,0.1,-0.03819183550780064,isomap_Amp_Sulbactam_Interpretación_n5_thresh0.1.png
+Amp/Sulbactam Interpretación,10,0.1,-0.03334893782236942,isomap_Amp_Sulbactam_Interpretación_n10_thresh0.1.png
+Amp/Sulbactam Interpretación,15,0.1,-0.037626033626038585,isomap_Amp_Sulbactam_Interpretación_n15_thresh0.1.png
+Amp/Sulbactam Interpretación,30,0.1,-0.035432505377854334,isomap_Amp_Sulbactam_Interpretación_n30_thresh0.1.png
+Amp/Sulbactam Interpretación,2,0.15,-0.05980645884147514,isomap_Amp_Sulbactam_Interpretación_n2_thresh0.15.png
+Amp/Sulbactam Interpretación,5,0.15,-0.06419218826429682,isomap_Amp_Sulbactam_Interpretación_n5_thresh0.15.png
+Amp/Sulbactam Interpretación,10,0.15,-0.0671848252510322,isomap_Amp_Sulbactam_Interpretación_n10_thresh0.15.png
+Amp/Sulbactam Interpretación,15,0.15,-0.06705090508649766,isomap_Amp_Sulbactam_Interpretación_n15_thresh0.15.png
+Amp/Sulbactam Interpretación,30,0.15,-0.07074665478804007,isomap_Amp_Sulbactam_Interpretación_n30_thresh0.15.png
+Amp/Sulbactam Interpretación,2,0.2,-0.27954710430270563,isomap_Amp_Sulbactam_Interpretación_n2_thresh0.2.png
+Amp/Sulbactam Interpretación,5,0.2,-0.2320419652564605,isomap_Amp_Sulbactam_Interpretación_n5_thresh0.2.png
+Amp/Sulbactam Interpretación,10,0.2,-0.23176305339205008,isomap_Amp_Sulbactam_Interpretación_n10_thresh0.2.png
+Amp/Sulbactam Interpretación,15,0.2,-0.22782172610374735,isomap_Amp_Sulbactam_Interpretación_n15_thresh0.2.png
+Amp/Sulbactam Interpretación,30,0.2,-0.23066410812320665,isomap_Amp_Sulbactam_Interpretación_n30_thresh0.2.png

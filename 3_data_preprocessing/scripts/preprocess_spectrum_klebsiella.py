@@ -4,30 +4,31 @@ from datetime import datetime
 import numpy as np
 import pandas as pd
 import zipfile
-from spectrum import SpectrumObject, VarStabilizer, Smoother, BaselineCorrecter, Normalizer, Trimmer
+from spectrum import SpectrumObject, VarStabilizer, Smoother, BaselineCorrecter, Normalizer, Trimmer, Binner
 from scipy import interpolate
 import joblib
 import tempfile
 
 # Define the base directory
 base_dir = '/export/data_ml4ds/bacteria_id/RAW_MaldiMaranon/data_cleaner_results_v2/klebsiellaPneumoniae'
-preprocessed_dir = './amr'
+preprocessed_dir = '/export/usuarios01/ilmareca/github/MaldiTof-BacteriaID-GregorioMaranon/3_data_preprocessing/scripts/outputs'
 
-# Create logs directory if it doesn't exist
-os.makedirs('./logs/amr', exist_ok=True)
-
-# Configure loggers
 timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
 error_logger = logging.getLogger('error_logger')
-error_handler = logging.FileHandler(f'./logs/amr/error_log_{timestamp}.log')
+error_handler = logging.FileHandler(f'/export/usuarios01/ilmareca/github/MaldiTof-BacteriaID-GregorioMaranon/3_data_preprocessing/logs/klebsiella_pneumoniae/error_log_{timestamp}.log')
 error_logger.addHandler(error_handler)
 error_logger.setLevel(logging.ERROR)
 
+zip_logger = logging.getLogger('zip_logger')
+zip_handler = logging.FileHandler(f'/export/usuarios01/ilmareca/github/MaldiTof-BacteriaID-GregorioMaranon/3_data_preprocessing/logs/klebsiella_pneumoniae/zip_log_{timestamp}.log')
+zip_logger.addHandler(zip_handler)
+zip_logger.setLevel(logging.INFO)
+
 fid_acqu_logger = logging.getLogger('fid_acqu_logger')
-fid_acqu_handler = logging.FileHandler(f'./logs/amr/fid_acqu_log_{timestamp}.log')
+fid_acqu_handler = logging.FileHandler(f'/export/usuarios01/ilmareca/github/MaldiTof-BacteriaID-GregorioMaranon/3_data_preprocessing/logs/klebsiella_pneumoniae/fid_acqu_log_{timestamp}.log')
 fid_acqu_logger.addHandler(fid_acqu_handler)
 fid_acqu_logger.setLevel(logging.INFO)
-
+  
 def load_spectra_from_dir(base_dir):
     acqu_files = []
     fid_files = []
@@ -55,7 +56,7 @@ def load_spectra_from_dir(base_dir):
     return acqu_files, fid_files, labels
 
 # Function to preprocess spectra with variance stabilization, smoothing, baseline correction, normalization, and trimming
-def preprocess_spectrum(acqu_file, fid_file, target_length=1000):
+def preprocess_spectrum(acqu_file, fid_file):
     spectrum = SpectrumObject.from_bruker(acqu_file, fid_file)
     
     # Apply each preprocessing step
@@ -64,10 +65,9 @@ def preprocess_spectrum(acqu_file, fid_file, target_length=1000):
     spectrum = baseline_correction(spectrum)
     spectrum = normalization(spectrum)
     spectrum = trimming(spectrum)
+    spectrum = binning(spectrum)
     
-    # Interpolate to the target length
-    mz_new, intensity_new = interpolate_spectrum(spectrum, target_length)
-    return intensity_new
+    return spectrum.intensity
 
 # Preprocessing steps
 def variance_stabilization(spectrum):
@@ -90,6 +90,10 @@ def trimming(spectrum, min_mz=2000, max_mz=20000):
     trimmer = Trimmer(min=min_mz, max=max_mz)
     return trimmer(spectrum)
 
+def binning(spectrum):
+    binner = Binner()
+    return binner(spectrum)
+
 # Function to interpolate spectrum to the target length
 def interpolate_spectrum(spectrum, target_length=1000):
     """Interpolate spectrum to ensure the same length."""
@@ -99,29 +103,27 @@ def interpolate_spectrum(spectrum, target_length=1000):
     return mz_new, intensity_new
 
 # Function to preprocess and save all spectra
-def preprocess_and_save_spectra(base_dir, target_length=1000, preprocessed_dir=None):
+def preprocess_and_save_spectra(base_dir, preprocessed_dir=None):
     acqu_files, fid_files, labels = load_spectra_from_dir(base_dir)
     all_spectra = []
 
     for acqu_file, fid_file, label in zip(acqu_files, fid_files, labels):
-        intensity_new = preprocess_spectrum(acqu_file, fid_file, target_length)
+        intensity_new = preprocess_spectrum(acqu_file, fid_file)
         all_spectra.append(intensity_new)
 
     X = np.array(all_spectra)
     y = np.array(labels)
 
-    if preprocessed_dir:
-        os.makedirs(preprocessed_dir, exist_ok=True)
-        joblib.dump(X, os.path.join(preprocessed_dir, 'X.pkl'))
-        joblib.dump(y, os.path.join(preprocessed_dir, 'y.pkl'))
+    os.makedirs(preprocessed_dir, exist_ok=True)
+    joblib.dump(X, os.path.join(preprocessed_dir, 'X_klebsiella.pkl'))
+    joblib.dump(y, os.path.join(preprocessed_dir, 'y_klebsiella.pkl'))
 
     return X, y
 
 def main():
-    target_length = 1000  # Length to which spectra will be interpolated
     
     # Preprocess and save spectra
-    preprocess_and_save_spectra(base_dir, target_length, preprocessed_dir)
+    preprocess_and_save_spectra(base_dir, preprocessed_dir)
 
 if __name__ == "__main__":
     main()

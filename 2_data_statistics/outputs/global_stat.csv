@@ -1,0 +1,19 @@
+dataset,#samples,#maldis,#genus,#species,genus+species,#fids,AMR
+HGUGM,168404,205040,289,1095
+HGUGM,,,,,Escherichia Coli,19769,0
+HGUGM,,,,,Enterococcus Faecalis,19405,0
+HGUGM,,,,,Staphylococcus Aureus,15757,0
+HGUGM,,,,,Klebsiella Pneumoniae,15559,0
+HGUGM,,,,,Staphylococcus Epidermidis,15292,0
+DRIAMS,unknown,132097,203,836
+DRIAMS,,,,,Escherichia Coli,11160,0
+DRIAMS,,,,,Staphylococcus Aureus,10519,0
+DRIAMS,,,,,Staphylococcus Epidermidis,10333,0
+DRIAMS,,,,,Klebsiella Pneumoniae,6791,0
+DRIAMS,,,,,Pseudomonas Aeruginosa,5824,0
+RKI,1086,11039,73,230
+RKI,,,,,Bacillus Group,641,0
+RKI,,,,,Enterococcus Faecium,333,0
+RKI,,,,,Burkholderia Contaminans,235,0
+RKI,,,,,Staphylococcus Aureus,225,0
+RKI,,,,,Vibrio Cholerae,218,0

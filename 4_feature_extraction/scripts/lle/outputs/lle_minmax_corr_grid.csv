@@ -1,0 +1,17 @@
+Antibiotic,n_neighbors,threshold,silhouette_score,file_name
+Amp/Sulbactam Interpretación,5,0.05,-0.07742026780080406,lle_Amp_Sulbactam_Interpretación_n5_thresh0.05.png
+Amp/Sulbactam Interpretación,10,0.05,-0.07890284028199504,lle_Amp_Sulbactam_Interpretación_n10_thresh0.05.png
+Amp/Sulbactam Interpretación,15,0.05,-0.08648975023909689,lle_Amp_Sulbactam_Interpretación_n15_thresh0.05.png
+Amp/Sulbactam Interpretación,30,0.05,-0.02945509878524716,lle_Amp_Sulbactam_Interpretación_n30_thresh0.05.png
+Amp/Sulbactam Interpretación,5,0.1,-0.1396392108319312,lle_Amp_Sulbactam_Interpretación_n5_thresh0.1.png
+Amp/Sulbactam Interpretación,10,0.1,0.04947960476282028,lle_Amp_Sulbactam_Interpretación_n10_thresh0.1.png
+Amp/Sulbactam Interpretación,15,0.1,-0.027810878305023632,lle_Amp_Sulbactam_Interpretación_n15_thresh0.1.png
+Amp/Sulbactam Interpretación,30,0.1,-0.05269155478768764,lle_Amp_Sulbactam_Interpretación_n30_thresh0.1.png
+Amp/Sulbactam Interpretación,5,0.15,-0.7095773606432001,lle_Amp_Sulbactam_Interpretación_n5_thresh0.15.png
+Amp/Sulbactam Interpretación,10,0.15,-0.05962821965709045,lle_Amp_Sulbactam_Interpretación_n10_thresh0.15.png
+Amp/Sulbactam Interpretación,15,0.15,-0.12197252655545933,lle_Amp_Sulbactam_Interpretación_n15_thresh0.15.png
+Amp/Sulbactam Interpretación,30,0.15,-0.059808927112830354,lle_Amp_Sulbactam_Interpretación_n30_thresh0.15.png
+Amp/Sulbactam Interpretación,5,0.2,-0.2409780576798176,lle_Amp_Sulbactam_Interpretación_n5_thresh0.2.png
+Amp/Sulbactam Interpretación,10,0.2,-0.11310487786628685,lle_Amp_Sulbactam_Interpretación_n10_thresh0.2.png
+Amp/Sulbactam Interpretación,15,0.2,-0.11606412800726966,lle_Amp_Sulbactam_Interpretación_n15_thresh0.2.png
+Amp/Sulbactam Interpretación,30,0.2,-0.16768329495492532,lle_Amp_Sulbactam_Interpretación_n30_thresh0.2.png
