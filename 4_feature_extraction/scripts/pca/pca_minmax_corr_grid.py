@@ -44,7 +44,7 @@ antibiotics = [col for col in df_amr.columns if 'Interpretación' in col]
 color_map = {'R': '#da0d91', 'S': '#07b457', 'I': '#f4a742'}
 
 # Define the grid of hyperparameters for PCA and feature selection
-n_components_list = [2, 5, 10]  # Different numbers of components
+n_components_list = [2, 5, 10, 50, 100, 500, 1000, 2500, 3000, 4000, 5000]  # Different numbers of components
 threshold_list = [0.05, 0.1, 0.15, 0.2]  # Different thresholds for feature selection
 
 # Perform feature selection based on correlation

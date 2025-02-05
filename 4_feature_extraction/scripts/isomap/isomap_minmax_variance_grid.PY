@@ -46,7 +46,7 @@ color_map = {'R': '#da0d91', 'S': '#07b457', 'I': '#f4a742'}
 
 # Define the grid of hyperparameters for Isomap and feature selection
 n_neighbors_list = [5, 10, 15, 30]  # Different neighborhood sizes for Isomap
-variance_threshold_list = [0.01, 0.05, 0.1]  # Different thresholds for variance selection
+variance_threshold_list = [0.01, 0.05, 0.1, 0.25]  # Different thresholds for variance selection
 
 # Perform feature selection using Variance Thresholding
 def select_features_by_variance(X, threshold=0.1):

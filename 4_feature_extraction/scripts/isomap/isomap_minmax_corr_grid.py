@@ -46,7 +46,7 @@ color_map = {'R': '#da0d91', 'S': '#07b457', 'I': '#f4a742'}
 # Define the grid of hyperparameters for Isomap and feature selection
 n_neighbors_list = [2, 5, 10, 15, 30]  # Different neighborhood sizes
 n_components_list = [2]  # Number of components for Isomap (usually 2 for visualization)
-threshold_list = [0.05, 0.1, 0.15, 0.2]  # Different thresholds for feature selection
+threshold_list = [0.05, 0.1, 0.15, 0.2, 0.3]  # Different thresholds for feature selection
 
 # Perform feature selection based on correlation
 def select_features_by_correlation(df, labels_col, threshold=0.1):
