@@ -1,145 +1,193 @@
 Antibiotic,n_neighbors,min_dist,metric,threshold,silhouette_score,file_name
-Amp/Sulbactam Interpretación,2,0.1,euclidean,0.05,-0.03419486,umap_Amp_Sulbactam_Interpretación_n2_dist0.1_metriceuclidean_thresh0.05.png
-Amp/Sulbactam Interpretación,2,0.1,manhattan,0.05,-0.018217511,umap_Amp_Sulbactam_Interpretación_n2_dist0.1_metricmanhattan_thresh0.05.png
-Amp/Sulbactam Interpretación,2,0.3,euclidean,0.05,-0.037549194,umap_Amp_Sulbactam_Interpretación_n2_dist0.3_metriceuclidean_thresh0.05.png
-Amp/Sulbactam Interpretación,2,0.3,manhattan,0.05,-0.00027381763,umap_Amp_Sulbactam_Interpretación_n2_dist0.3_metricmanhattan_thresh0.05.png
-Amp/Sulbactam Interpretación,2,0.5,euclidean,0.05,-0.043446355,umap_Amp_Sulbactam_Interpretación_n2_dist0.5_metriceuclidean_thresh0.05.png
-Amp/Sulbactam Interpretación,2,0.5,manhattan,0.05,-0.019601911,umap_Amp_Sulbactam_Interpretación_n2_dist0.5_metricmanhattan_thresh0.05.png
-Amp/Sulbactam Interpretación,5,0.1,euclidean,0.05,-0.07159442,umap_Amp_Sulbactam_Interpretación_n5_dist0.1_metriceuclidean_thresh0.05.png
-Amp/Sulbactam Interpretación,5,0.1,manhattan,0.05,-0.07014309,umap_Amp_Sulbactam_Interpretación_n5_dist0.1_metricmanhattan_thresh0.05.png
-Amp/Sulbactam Interpretación,5,0.3,euclidean,0.05,-0.06455692,umap_Amp_Sulbactam_Interpretación_n5_dist0.3_metriceuclidean_thresh0.05.png
-Amp/Sulbactam Interpretación,5,0.3,manhattan,0.05,-0.06404909,umap_Amp_Sulbactam_Interpretación_n5_dist0.3_metricmanhattan_thresh0.05.png
-Amp/Sulbactam Interpretación,5,0.5,euclidean,0.05,-0.06617551,umap_Amp_Sulbactam_Interpretación_n5_dist0.5_metriceuclidean_thresh0.05.png
-Amp/Sulbactam Interpretación,5,0.5,manhattan,0.05,-0.07590666,umap_Amp_Sulbactam_Interpretación_n5_dist0.5_metricmanhattan_thresh0.05.png
-Amp/Sulbactam Interpretación,10,0.1,euclidean,0.05,-0.0678389,umap_Amp_Sulbactam_Interpretación_n10_dist0.1_metriceuclidean_thresh0.05.png
-Amp/Sulbactam Interpretación,10,0.1,manhattan,0.05,-0.06664449,umap_Amp_Sulbactam_Interpretación_n10_dist0.1_metricmanhattan_thresh0.05.png
-Amp/Sulbactam Interpretación,10,0.3,euclidean,0.05,-0.0674543,umap_Amp_Sulbactam_Interpretación_n10_dist0.3_metriceuclidean_thresh0.05.png
-Amp/Sulbactam Interpretación,10,0.3,manhattan,0.05,-0.07163254,umap_Amp_Sulbactam_Interpretación_n10_dist0.3_metricmanhattan_thresh0.05.png
-Amp/Sulbactam Interpretación,10,0.5,euclidean,0.05,-0.069011316,umap_Amp_Sulbactam_Interpretación_n10_dist0.5_metriceuclidean_thresh0.05.png
-Amp/Sulbactam Interpretación,10,0.5,manhattan,0.05,-0.06382214,umap_Amp_Sulbactam_Interpretación_n10_dist0.5_metricmanhattan_thresh0.05.png
-Amp/Sulbactam Interpretación,15,0.1,euclidean,0.05,-0.076352015,umap_Amp_Sulbactam_Interpretación_n15_dist0.1_metriceuclidean_thresh0.05.png
-Amp/Sulbactam Interpretación,15,0.1,manhattan,0.05,-0.07701185,umap_Amp_Sulbactam_Interpretación_n15_dist0.1_metricmanhattan_thresh0.05.png
-Amp/Sulbactam Interpretación,15,0.3,euclidean,0.05,-0.07072685,umap_Amp_Sulbactam_Interpretación_n15_dist0.3_metriceuclidean_thresh0.05.png
-Amp/Sulbactam Interpretación,15,0.3,manhattan,0.05,-0.071443215,umap_Amp_Sulbactam_Interpretación_n15_dist0.3_metricmanhattan_thresh0.05.png
-Amp/Sulbactam Interpretación,15,0.5,euclidean,0.05,-0.07117339,umap_Amp_Sulbactam_Interpretación_n15_dist0.5_metriceuclidean_thresh0.05.png
-Amp/Sulbactam Interpretación,15,0.5,manhattan,0.05,-0.06916293,umap_Amp_Sulbactam_Interpretación_n15_dist0.5_metricmanhattan_thresh0.05.png
-Amp/Sulbactam Interpretación,30,0.1,euclidean,0.05,-0.07266474,umap_Amp_Sulbactam_Interpretación_n30_dist0.1_metriceuclidean_thresh0.05.png
-Amp/Sulbactam Interpretación,30,0.1,manhattan,0.05,-0.07937229,umap_Amp_Sulbactam_Interpretación_n30_dist0.1_metricmanhattan_thresh0.05.png
-Amp/Sulbactam Interpretación,30,0.3,euclidean,0.05,-0.07278079,umap_Amp_Sulbactam_Interpretación_n30_dist0.3_metriceuclidean_thresh0.05.png
-Amp/Sulbactam Interpretación,30,0.3,manhattan,0.05,-0.07284826,umap_Amp_Sulbactam_Interpretación_n30_dist0.3_metricmanhattan_thresh0.05.png
-Amp/Sulbactam Interpretación,30,0.5,euclidean,0.05,-0.07355489,umap_Amp_Sulbactam_Interpretación_n30_dist0.5_metriceuclidean_thresh0.05.png
-Amp/Sulbactam Interpretación,30,0.5,manhattan,0.05,-0.06750715,umap_Amp_Sulbactam_Interpretación_n30_dist0.5_metricmanhattan_thresh0.05.png
-Amp/Sulbactam Interpretación,45,0.1,euclidean,0.05,-0.07696214,umap_Amp_Sulbactam_Interpretación_n45_dist0.1_metriceuclidean_thresh0.05.png
-Amp/Sulbactam Interpretación,45,0.1,manhattan,0.05,-0.074437685,umap_Amp_Sulbactam_Interpretación_n45_dist0.1_metricmanhattan_thresh0.05.png
-Amp/Sulbactam Interpretación,45,0.3,euclidean,0.05,-0.07570377,umap_Amp_Sulbactam_Interpretación_n45_dist0.3_metriceuclidean_thresh0.05.png
-Amp/Sulbactam Interpretación,45,0.3,manhattan,0.05,-0.07031774,umap_Amp_Sulbactam_Interpretación_n45_dist0.3_metricmanhattan_thresh0.05.png
-Amp/Sulbactam Interpretación,45,0.5,euclidean,0.05,-0.07198454,umap_Amp_Sulbactam_Interpretación_n45_dist0.5_metriceuclidean_thresh0.05.png
-Amp/Sulbactam Interpretación,45,0.5,manhattan,0.05,-0.06572358,umap_Amp_Sulbactam_Interpretación_n45_dist0.5_metricmanhattan_thresh0.05.png
-Amp/Sulbactam Interpretación,2,0.1,euclidean,0.1,-0.013375428,umap_Amp_Sulbactam_Interpretación_n2_dist0.1_metriceuclidean_thresh0.1.png
-Amp/Sulbactam Interpretación,2,0.1,manhattan,0.1,-0.01421454,umap_Amp_Sulbactam_Interpretación_n2_dist0.1_metricmanhattan_thresh0.1.png
-Amp/Sulbactam Interpretación,2,0.3,euclidean,0.1,-0.026229585,umap_Amp_Sulbactam_Interpretación_n2_dist0.3_metriceuclidean_thresh0.1.png
-Amp/Sulbactam Interpretación,2,0.3,manhattan,0.1,-0.030714188,umap_Amp_Sulbactam_Interpretación_n2_dist0.3_metricmanhattan_thresh0.1.png
-Amp/Sulbactam Interpretación,2,0.5,euclidean,0.1,-0.030412752,umap_Amp_Sulbactam_Interpretación_n2_dist0.5_metriceuclidean_thresh0.1.png
-Amp/Sulbactam Interpretación,2,0.5,manhattan,0.1,-0.02544594,umap_Amp_Sulbactam_Interpretación_n2_dist0.5_metricmanhattan_thresh0.1.png
-Amp/Sulbactam Interpretación,5,0.1,euclidean,0.1,-0.017733673,umap_Amp_Sulbactam_Interpretación_n5_dist0.1_metriceuclidean_thresh0.1.png
-Amp/Sulbactam Interpretación,5,0.1,manhattan,0.1,0.006193768,umap_Amp_Sulbactam_Interpretación_n5_dist0.1_metricmanhattan_thresh0.1.png
-Amp/Sulbactam Interpretación,5,0.3,euclidean,0.1,-0.02114151,umap_Amp_Sulbactam_Interpretación_n5_dist0.3_metriceuclidean_thresh0.1.png
-Amp/Sulbactam Interpretación,5,0.3,manhattan,0.1,0.0010640484,umap_Amp_Sulbactam_Interpretación_n5_dist0.3_metricmanhattan_thresh0.1.png
-Amp/Sulbactam Interpretación,5,0.5,euclidean,0.1,-0.019596316,umap_Amp_Sulbactam_Interpretación_n5_dist0.5_metriceuclidean_thresh0.1.png
-Amp/Sulbactam Interpretación,5,0.5,manhattan,0.1,-0.0010713164,umap_Amp_Sulbactam_Interpretación_n5_dist0.5_metricmanhattan_thresh0.1.png
-Amp/Sulbactam Interpretación,10,0.1,euclidean,0.1,-0.005280437,umap_Amp_Sulbactam_Interpretación_n10_dist0.1_metriceuclidean_thresh0.1.png
-Amp/Sulbactam Interpretación,10,0.1,manhattan,0.1,-0.00015713526,umap_Amp_Sulbactam_Interpretación_n10_dist0.1_metricmanhattan_thresh0.1.png
-Amp/Sulbactam Interpretación,10,0.3,euclidean,0.1,-0.014730783,umap_Amp_Sulbactam_Interpretación_n10_dist0.3_metriceuclidean_thresh0.1.png
-Amp/Sulbactam Interpretación,10,0.3,manhattan,0.1,0.014980358,umap_Amp_Sulbactam_Interpretación_n10_dist0.3_metricmanhattan_thresh0.1.png
-Amp/Sulbactam Interpretación,10,0.5,euclidean,0.1,-0.018532787,umap_Amp_Sulbactam_Interpretación_n10_dist0.5_metriceuclidean_thresh0.1.png
-Amp/Sulbactam Interpretación,10,0.5,manhattan,0.1,0.007785424,umap_Amp_Sulbactam_Interpretación_n10_dist0.5_metricmanhattan_thresh0.1.png
-Amp/Sulbactam Interpretación,15,0.1,euclidean,0.1,-0.0023335798,umap_Amp_Sulbactam_Interpretación_n15_dist0.1_metriceuclidean_thresh0.1.png
-Amp/Sulbactam Interpretación,15,0.1,manhattan,0.1,0.007116518,umap_Amp_Sulbactam_Interpretación_n15_dist0.1_metricmanhattan_thresh0.1.png
-Amp/Sulbactam Interpretación,15,0.3,euclidean,0.1,-0.011436103,umap_Amp_Sulbactam_Interpretación_n15_dist0.3_metriceuclidean_thresh0.1.png
-Amp/Sulbactam Interpretación,15,0.3,manhattan,0.1,-0.0032219202,umap_Amp_Sulbactam_Interpretación_n15_dist0.3_metricmanhattan_thresh0.1.png
-Amp/Sulbactam Interpretación,15,0.5,euclidean,0.1,-0.018376367,umap_Amp_Sulbactam_Interpretación_n15_dist0.5_metriceuclidean_thresh0.1.png
-Amp/Sulbactam Interpretación,15,0.5,manhattan,0.1,-0.00860589,umap_Amp_Sulbactam_Interpretación_n15_dist0.5_metricmanhattan_thresh0.1.png
-Amp/Sulbactam Interpretación,30,0.1,euclidean,0.1,-0.0024502652,umap_Amp_Sulbactam_Interpretación_n30_dist0.1_metriceuclidean_thresh0.1.png
-Amp/Sulbactam Interpretación,30,0.1,manhattan,0.1,0.008998295,umap_Amp_Sulbactam_Interpretación_n30_dist0.1_metricmanhattan_thresh0.1.png
-Amp/Sulbactam Interpretación,30,0.3,euclidean,0.1,-0.013437689,umap_Amp_Sulbactam_Interpretación_n30_dist0.3_metriceuclidean_thresh0.1.png
-Amp/Sulbactam Interpretación,30,0.3,manhattan,0.1,-0.004743781,umap_Amp_Sulbactam_Interpretación_n30_dist0.3_metricmanhattan_thresh0.1.png
-Amp/Sulbactam Interpretación,30,0.5,euclidean,0.1,-0.017354775,umap_Amp_Sulbactam_Interpretación_n30_dist0.5_metriceuclidean_thresh0.1.png
-Amp/Sulbactam Interpretación,30,0.5,manhattan,0.1,-0.010266093,umap_Amp_Sulbactam_Interpretación_n30_dist0.5_metricmanhattan_thresh0.1.png
-Amp/Sulbactam Interpretación,45,0.1,euclidean,0.1,-0.0014619507,umap_Amp_Sulbactam_Interpretación_n45_dist0.1_metriceuclidean_thresh0.1.png
-Amp/Sulbactam Interpretación,45,0.1,manhattan,0.1,0.008327311,umap_Amp_Sulbactam_Interpretación_n45_dist0.1_metricmanhattan_thresh0.1.png
-Amp/Sulbactam Interpretación,45,0.3,euclidean,0.1,-0.012421033,umap_Amp_Sulbactam_Interpretación_n45_dist0.3_metriceuclidean_thresh0.1.png
-Amp/Sulbactam Interpretación,45,0.3,manhattan,0.1,-0.0035682737,umap_Amp_Sulbactam_Interpretación_n45_dist0.3_metricmanhattan_thresh0.1.png
-Amp/Sulbactam Interpretación,45,0.5,euclidean,0.1,-0.019877927,umap_Amp_Sulbactam_Interpretación_n45_dist0.5_metriceuclidean_thresh0.1.png
-Amp/Sulbactam Interpretación,45,0.5,manhattan,0.1,-0.012289559,umap_Amp_Sulbactam_Interpretación_n45_dist0.5_metricmanhattan_thresh0.1.png
-Amp/Sulbactam Interpretación,2,0.1,euclidean,0.15,-0.010491148,umap_Amp_Sulbactam_Interpretación_n2_dist0.1_metriceuclidean_thresh0.15.png
-Amp/Sulbactam Interpretación,2,0.1,manhattan,0.15,-0.014861096,umap_Amp_Sulbactam_Interpretación_n2_dist0.1_metricmanhattan_thresh0.15.png
-Amp/Sulbactam Interpretación,2,0.3,euclidean,0.15,-0.024895985,umap_Amp_Sulbactam_Interpretación_n2_dist0.3_metriceuclidean_thresh0.15.png
-Amp/Sulbactam Interpretación,2,0.3,manhattan,0.15,-0.019593049,umap_Amp_Sulbactam_Interpretación_n2_dist0.3_metricmanhattan_thresh0.15.png
-Amp/Sulbactam Interpretación,2,0.5,euclidean,0.15,-0.012188456,umap_Amp_Sulbactam_Interpretación_n2_dist0.5_metriceuclidean_thresh0.15.png
-Amp/Sulbactam Interpretación,2,0.5,manhattan,0.15,-0.014998572,umap_Amp_Sulbactam_Interpretación_n2_dist0.5_metricmanhattan_thresh0.15.png
-Amp/Sulbactam Interpretación,5,0.1,euclidean,0.15,-0.011519092,umap_Amp_Sulbactam_Interpretación_n5_dist0.1_metriceuclidean_thresh0.15.png
-Amp/Sulbactam Interpretación,5,0.1,manhattan,0.15,-0.010723967,umap_Amp_Sulbactam_Interpretación_n5_dist0.1_metricmanhattan_thresh0.15.png
-Amp/Sulbactam Interpretación,5,0.3,euclidean,0.15,-0.009886595,umap_Amp_Sulbactam_Interpretación_n5_dist0.3_metriceuclidean_thresh0.15.png
-Amp/Sulbactam Interpretación,5,0.3,manhattan,0.15,-0.013904717,umap_Amp_Sulbactam_Interpretación_n5_dist0.3_metricmanhattan_thresh0.15.png
-Amp/Sulbactam Interpretación,5,0.5,euclidean,0.15,-0.00680458,umap_Amp_Sulbactam_Interpretación_n5_dist0.5_metriceuclidean_thresh0.15.png
-Amp/Sulbactam Interpretación,5,0.5,manhattan,0.15,-0.012736553,umap_Amp_Sulbactam_Interpretación_n5_dist0.5_metricmanhattan_thresh0.15.png
-Amp/Sulbactam Interpretación,10,0.1,euclidean,0.15,-0.019698864,umap_Amp_Sulbactam_Interpretación_n10_dist0.1_metriceuclidean_thresh0.15.png
-Amp/Sulbactam Interpretación,10,0.1,manhattan,0.15,-0.019414054,umap_Amp_Sulbactam_Interpretación_n10_dist0.1_metricmanhattan_thresh0.15.png
-Amp/Sulbactam Interpretación,10,0.3,euclidean,0.15,-0.015714848,umap_Amp_Sulbactam_Interpretación_n10_dist0.3_metriceuclidean_thresh0.15.png
-Amp/Sulbactam Interpretación,10,0.3,manhattan,0.15,-0.010601189,umap_Amp_Sulbactam_Interpretación_n10_dist0.3_metricmanhattan_thresh0.15.png
-Amp/Sulbactam Interpretación,10,0.5,euclidean,0.15,-0.013496267,umap_Amp_Sulbactam_Interpretación_n10_dist0.5_metriceuclidean_thresh0.15.png
-Amp/Sulbactam Interpretación,10,0.5,manhattan,0.15,-0.005069415,umap_Amp_Sulbactam_Interpretación_n10_dist0.5_metricmanhattan_thresh0.15.png
-Amp/Sulbactam Interpretación,15,0.1,euclidean,0.15,-0.02710474,umap_Amp_Sulbactam_Interpretación_n15_dist0.1_metriceuclidean_thresh0.15.png
-Amp/Sulbactam Interpretación,15,0.1,manhattan,0.15,-0.023513163,umap_Amp_Sulbactam_Interpretación_n15_dist0.1_metricmanhattan_thresh0.15.png
-Amp/Sulbactam Interpretación,15,0.3,euclidean,0.15,-0.019691434,umap_Amp_Sulbactam_Interpretación_n15_dist0.3_metriceuclidean_thresh0.15.png
-Amp/Sulbactam Interpretación,15,0.3,manhattan,0.15,-0.020011485,umap_Amp_Sulbactam_Interpretación_n15_dist0.3_metricmanhattan_thresh0.15.png
-Amp/Sulbactam Interpretación,15,0.5,euclidean,0.15,-0.01239477,umap_Amp_Sulbactam_Interpretación_n15_dist0.5_metriceuclidean_thresh0.15.png
-Amp/Sulbactam Interpretación,15,0.5,manhattan,0.15,-0.011444164,umap_Amp_Sulbactam_Interpretación_n15_dist0.5_metricmanhattan_thresh0.15.png
-Amp/Sulbactam Interpretación,30,0.1,euclidean,0.15,-0.033621784,umap_Amp_Sulbactam_Interpretación_n30_dist0.1_metriceuclidean_thresh0.15.png
-Amp/Sulbactam Interpretación,30,0.1,manhattan,0.15,-0.030871384,umap_Amp_Sulbactam_Interpretación_n30_dist0.1_metricmanhattan_thresh0.15.png
-Amp/Sulbactam Interpretación,30,0.3,euclidean,0.15,-0.021921247,umap_Amp_Sulbactam_Interpretación_n30_dist0.3_metriceuclidean_thresh0.15.png
-Amp/Sulbactam Interpretación,30,0.3,manhattan,0.15,-0.019969514,umap_Amp_Sulbactam_Interpretación_n30_dist0.3_metricmanhattan_thresh0.15.png
-Amp/Sulbactam Interpretación,30,0.5,euclidean,0.15,-0.016566824,umap_Amp_Sulbactam_Interpretación_n30_dist0.5_metriceuclidean_thresh0.15.png
-Amp/Sulbactam Interpretación,30,0.5,manhattan,0.15,-0.010638507,umap_Amp_Sulbactam_Interpretación_n30_dist0.5_metricmanhattan_thresh0.15.png
-Amp/Sulbactam Interpretación,45,0.1,euclidean,0.15,-0.03863269,umap_Amp_Sulbactam_Interpretación_n45_dist0.1_metriceuclidean_thresh0.15.png
-Amp/Sulbactam Interpretación,45,0.1,manhattan,0.15,-0.03500703,umap_Amp_Sulbactam_Interpretación_n45_dist0.1_metricmanhattan_thresh0.15.png
-Amp/Sulbactam Interpretación,45,0.3,euclidean,0.15,-0.026004506,umap_Amp_Sulbactam_Interpretación_n45_dist0.3_metriceuclidean_thresh0.15.png
-Amp/Sulbactam Interpretación,45,0.3,manhattan,0.15,-0.02590637,umap_Amp_Sulbactam_Interpretación_n45_dist0.3_metricmanhattan_thresh0.15.png
-Amp/Sulbactam Interpretación,45,0.5,euclidean,0.15,-0.018928979,umap_Amp_Sulbactam_Interpretación_n45_dist0.5_metriceuclidean_thresh0.15.png
-Amp/Sulbactam Interpretación,45,0.5,manhattan,0.15,-0.011427267,umap_Amp_Sulbactam_Interpretación_n45_dist0.5_metricmanhattan_thresh0.15.png
-Amp/Sulbactam Interpretación,2,0.1,euclidean,0.2,-0.016337102,umap_Amp_Sulbactam_Interpretación_n2_dist0.1_metriceuclidean_thresh0.2.png
-Amp/Sulbactam Interpretación,2,0.1,manhattan,0.2,-0.006347605,umap_Amp_Sulbactam_Interpretación_n2_dist0.1_metricmanhattan_thresh0.2.png
-Amp/Sulbactam Interpretación,2,0.3,euclidean,0.2,-0.006587678,umap_Amp_Sulbactam_Interpretación_n2_dist0.3_metriceuclidean_thresh0.2.png
-Amp/Sulbactam Interpretación,2,0.3,manhattan,0.2,-0.010476367,umap_Amp_Sulbactam_Interpretación_n2_dist0.3_metricmanhattan_thresh0.2.png
-Amp/Sulbactam Interpretación,2,0.5,euclidean,0.2,-0.0056335297,umap_Amp_Sulbactam_Interpretación_n2_dist0.5_metriceuclidean_thresh0.2.png
-Amp/Sulbactam Interpretación,2,0.5,manhattan,0.2,-0.005960655,umap_Amp_Sulbactam_Interpretación_n2_dist0.5_metricmanhattan_thresh0.2.png
-Amp/Sulbactam Interpretación,5,0.1,euclidean,0.2,-0.03658525,umap_Amp_Sulbactam_Interpretación_n5_dist0.1_metriceuclidean_thresh0.2.png
-Amp/Sulbactam Interpretación,5,0.1,manhattan,0.2,-0.028440474,umap_Amp_Sulbactam_Interpretación_n5_dist0.1_metricmanhattan_thresh0.2.png
-Amp/Sulbactam Interpretación,5,0.3,euclidean,0.2,-0.04065347,umap_Amp_Sulbactam_Interpretación_n5_dist0.3_metriceuclidean_thresh0.2.png
-Amp/Sulbactam Interpretación,5,0.3,manhattan,0.2,-0.040771287,umap_Amp_Sulbactam_Interpretación_n5_dist0.3_metricmanhattan_thresh0.2.png
-Amp/Sulbactam Interpretación,5,0.5,euclidean,0.2,-0.035899222,umap_Amp_Sulbactam_Interpretación_n5_dist0.5_metriceuclidean_thresh0.2.png
-Amp/Sulbactam Interpretación,5,0.5,manhattan,0.2,-0.035632007,umap_Amp_Sulbactam_Interpretación_n5_dist0.5_metricmanhattan_thresh0.2.png
-Amp/Sulbactam Interpretación,10,0.1,euclidean,0.2,-0.047194816,umap_Amp_Sulbactam_Interpretación_n10_dist0.1_metriceuclidean_thresh0.2.png
-Amp/Sulbactam Interpretación,10,0.1,manhattan,0.2,-0.048190378,umap_Amp_Sulbactam_Interpretación_n10_dist0.1_metricmanhattan_thresh0.2.png
-Amp/Sulbactam Interpretación,10,0.3,euclidean,0.2,-0.043456826,umap_Amp_Sulbactam_Interpretación_n10_dist0.3_metriceuclidean_thresh0.2.png
-Amp/Sulbactam Interpretación,10,0.3,manhattan,0.2,-0.044218473,umap_Amp_Sulbactam_Interpretación_n10_dist0.3_metricmanhattan_thresh0.2.png
-Amp/Sulbactam Interpretación,10,0.5,euclidean,0.2,-0.041925788,umap_Amp_Sulbactam_Interpretación_n10_dist0.5_metriceuclidean_thresh0.2.png
-Amp/Sulbactam Interpretación,10,0.5,manhattan,0.2,-0.04282596,umap_Amp_Sulbactam_Interpretación_n10_dist0.5_metricmanhattan_thresh0.2.png
-Amp/Sulbactam Interpretación,15,0.1,euclidean,0.2,-0.056138225,umap_Amp_Sulbactam_Interpretación_n15_dist0.1_metriceuclidean_thresh0.2.png
-Amp/Sulbactam Interpretación,15,0.1,manhattan,0.2,-0.05438796,umap_Amp_Sulbactam_Interpretación_n15_dist0.1_metricmanhattan_thresh0.2.png
-Amp/Sulbactam Interpretación,15,0.3,euclidean,0.2,-0.048580524,umap_Amp_Sulbactam_Interpretación_n15_dist0.3_metriceuclidean_thresh0.2.png
-Amp/Sulbactam Interpretación,15,0.3,manhattan,0.2,-0.04804041,umap_Amp_Sulbactam_Interpretación_n15_dist0.3_metricmanhattan_thresh0.2.png
-Amp/Sulbactam Interpretación,15,0.5,euclidean,0.2,-0.04419727,umap_Amp_Sulbactam_Interpretación_n15_dist0.5_metriceuclidean_thresh0.2.png
-Amp/Sulbactam Interpretación,15,0.5,manhattan,0.2,-0.043508645,umap_Amp_Sulbactam_Interpretación_n15_dist0.5_metricmanhattan_thresh0.2.png
-Amp/Sulbactam Interpretación,30,0.1,euclidean,0.2,-0.059649307,umap_Amp_Sulbactam_Interpretación_n30_dist0.1_metriceuclidean_thresh0.2.png
-Amp/Sulbactam Interpretación,30,0.1,manhattan,0.2,-0.057562754,umap_Amp_Sulbactam_Interpretación_n30_dist0.1_metricmanhattan_thresh0.2.png
-Amp/Sulbactam Interpretación,30,0.3,euclidean,0.2,-0.05030367,umap_Amp_Sulbactam_Interpretación_n30_dist0.3_metriceuclidean_thresh0.2.png
-Amp/Sulbactam Interpretación,30,0.3,manhattan,0.2,-0.04981787,umap_Amp_Sulbactam_Interpretación_n30_dist0.3_metricmanhattan_thresh0.2.png
-Amp/Sulbactam Interpretación,30,0.5,euclidean,0.2,-0.04592464,umap_Amp_Sulbactam_Interpretación_n30_dist0.5_metriceuclidean_thresh0.2.png
-Amp/Sulbactam Interpretación,30,0.5,manhattan,0.2,-0.04627316,umap_Amp_Sulbactam_Interpretación_n30_dist0.5_metricmanhattan_thresh0.2.png
-Amp/Sulbactam Interpretación,45,0.1,euclidean,0.2,-0.06166788,umap_Amp_Sulbactam_Interpretación_n45_dist0.1_metriceuclidean_thresh0.2.png
-Amp/Sulbactam Interpretación,45,0.1,manhattan,0.2,-0.061473086,umap_Amp_Sulbactam_Interpretación_n45_dist0.1_metricmanhattan_thresh0.2.png
-Amp/Sulbactam Interpretación,45,0.3,euclidean,0.2,-0.05130137,umap_Amp_Sulbactam_Interpretación_n45_dist0.3_metriceuclidean_thresh0.2.png
-Amp/Sulbactam Interpretación,45,0.3,manhattan,0.2,-0.05357994,umap_Amp_Sulbactam_Interpretación_n45_dist0.3_metricmanhattan_thresh0.2.png
-Amp/Sulbactam Interpretación,45,0.5,euclidean,0.2,-0.04868387,umap_Amp_Sulbactam_Interpretación_n45_dist0.5_metriceuclidean_thresh0.2.png
-Amp/Sulbactam Interpretación,45,0.5,manhattan,0.2,-0.04888629,umap_Amp_Sulbactam_Interpretación_n45_dist0.5_metricmanhattan_thresh0.2.png
+Amp_Sulbactam_Interpretación,2,0.1,euclidean,0.05,-0.03419486,umap_Amp_Sulbactam_Interpretación_n2_dist0.1_metriceuclidean_thresh0.05.png
+Amp_Sulbactam_Interpretación,2,0.1,manhattan,0.05,-0.018217511,umap_Amp_Sulbactam_Interpretación_n2_dist0.1_metricmanhattan_thresh0.05.png
+Amp_Sulbactam_Interpretación,2,0.3,euclidean,0.05,-0.037549194,umap_Amp_Sulbactam_Interpretación_n2_dist0.3_metriceuclidean_thresh0.05.png
+Amp_Sulbactam_Interpretación,2,0.3,manhattan,0.05,-0.00027381763,umap_Amp_Sulbactam_Interpretación_n2_dist0.3_metricmanhattan_thresh0.05.png
+Amp_Sulbactam_Interpretación,2,0.5,euclidean,0.05,-0.043446355,umap_Amp_Sulbactam_Interpretación_n2_dist0.5_metriceuclidean_thresh0.05.png
+Amp_Sulbactam_Interpretación,2,0.5,manhattan,0.05,-0.019601911,umap_Amp_Sulbactam_Interpretación_n2_dist0.5_metricmanhattan_thresh0.05.png
+Amp_Sulbactam_Interpretación,2,0.8,euclidean,0.05,-0.027500847,umap_Amp_Sulbactam_Interpretación_n2_dist0.8_metriceuclidean_thresh0.05.png
+Amp_Sulbactam_Interpretación,2,0.8,manhattan,0.05,-0.01808965,umap_Amp_Sulbactam_Interpretación_n2_dist0.8_metricmanhattan_thresh0.05.png
+Amp_Sulbactam_Interpretación,5,0.1,euclidean,0.05,-0.07159442,umap_Amp_Sulbactam_Interpretación_n5_dist0.1_metriceuclidean_thresh0.05.png
+Amp_Sulbactam_Interpretación,5,0.1,manhattan,0.05,-0.06999603,umap_Amp_Sulbactam_Interpretación_n5_dist0.1_metricmanhattan_thresh0.05.png
+Amp_Sulbactam_Interpretación,5,0.3,euclidean,0.05,-0.06455692,umap_Amp_Sulbactam_Interpretación_n5_dist0.3_metriceuclidean_thresh0.05.png
+Amp_Sulbactam_Interpretación,5,0.3,manhattan,0.05,-0.06749728,umap_Amp_Sulbactam_Interpretación_n5_dist0.3_metricmanhattan_thresh0.05.png
+Amp_Sulbactam_Interpretación,5,0.5,euclidean,0.05,-0.06617551,umap_Amp_Sulbactam_Interpretación_n5_dist0.5_metriceuclidean_thresh0.05.png
+Amp_Sulbactam_Interpretación,5,0.5,manhattan,0.05,-0.06931774,umap_Amp_Sulbactam_Interpretación_n5_dist0.5_metricmanhattan_thresh0.05.png
+Amp_Sulbactam_Interpretación,5,0.8,euclidean,0.05,-0.06891106,umap_Amp_Sulbactam_Interpretación_n5_dist0.8_metriceuclidean_thresh0.05.png
+Amp_Sulbactam_Interpretación,5,0.8,manhattan,0.05,-0.06584632,umap_Amp_Sulbactam_Interpretación_n5_dist0.8_metricmanhattan_thresh0.05.png
+Amp_Sulbactam_Interpretación,10,0.1,euclidean,0.05,-0.0678389,umap_Amp_Sulbactam_Interpretación_n10_dist0.1_metriceuclidean_thresh0.05.png
+Amp_Sulbactam_Interpretación,10,0.1,manhattan,0.05,-0.06664449,umap_Amp_Sulbactam_Interpretación_n10_dist0.1_metricmanhattan_thresh0.05.png
+Amp_Sulbactam_Interpretación,10,0.3,euclidean,0.05,-0.0674543,umap_Amp_Sulbactam_Interpretación_n10_dist0.3_metriceuclidean_thresh0.05.png
+Amp_Sulbactam_Interpretación,10,0.3,manhattan,0.05,-0.07163254,umap_Amp_Sulbactam_Interpretación_n10_dist0.3_metricmanhattan_thresh0.05.png
+Amp_Sulbactam_Interpretación,10,0.5,euclidean,0.05,-0.069011316,umap_Amp_Sulbactam_Interpretación_n10_dist0.5_metriceuclidean_thresh0.05.png
+Amp_Sulbactam_Interpretación,10,0.5,manhattan,0.05,-0.06382214,umap_Amp_Sulbactam_Interpretación_n10_dist0.5_metricmanhattan_thresh0.05.png
+Amp_Sulbactam_Interpretación,10,0.8,euclidean,0.05,-0.068494275,umap_Amp_Sulbactam_Interpretación_n10_dist0.8_metriceuclidean_thresh0.05.png
+Amp_Sulbactam_Interpretación,10,0.8,manhattan,0.05,-0.06723646,umap_Amp_Sulbactam_Interpretación_n10_dist0.8_metricmanhattan_thresh0.05.png
+Amp_Sulbactam_Interpretación,15,0.1,euclidean,0.05,-0.076352015,umap_Amp_Sulbactam_Interpretación_n15_dist0.1_metriceuclidean_thresh0.05.png
+Amp_Sulbactam_Interpretación,15,0.1,manhattan,0.05,-0.07701185,umap_Amp_Sulbactam_Interpretación_n15_dist0.1_metricmanhattan_thresh0.05.png
+Amp_Sulbactam_Interpretación,15,0.3,euclidean,0.05,-0.07072685,umap_Amp_Sulbactam_Interpretación_n15_dist0.3_metriceuclidean_thresh0.05.png
+Amp_Sulbactam_Interpretación,15,0.3,manhattan,0.05,-0.071443215,umap_Amp_Sulbactam_Interpretación_n15_dist0.3_metricmanhattan_thresh0.05.png
+Amp_Sulbactam_Interpretación,15,0.5,euclidean,0.05,-0.07117339,umap_Amp_Sulbactam_Interpretación_n15_dist0.5_metriceuclidean_thresh0.05.png
+Amp_Sulbactam_Interpretación,15,0.5,manhattan,0.05,-0.06916293,umap_Amp_Sulbactam_Interpretación_n15_dist0.5_metricmanhattan_thresh0.05.png
+Amp_Sulbactam_Interpretación,15,0.8,euclidean,0.05,-0.06830694,umap_Amp_Sulbactam_Interpretación_n15_dist0.8_metriceuclidean_thresh0.05.png
+Amp_Sulbactam_Interpretación,15,0.8,manhattan,0.05,-0.064906925,umap_Amp_Sulbactam_Interpretación_n15_dist0.8_metricmanhattan_thresh0.05.png
+Amp_Sulbactam_Interpretación,30,0.1,euclidean,0.05,-0.07266474,umap_Amp_Sulbactam_Interpretación_n30_dist0.1_metriceuclidean_thresh0.05.png
+Amp_Sulbactam_Interpretación,30,0.1,manhattan,0.05,-0.07937229,umap_Amp_Sulbactam_Interpretación_n30_dist0.1_metricmanhattan_thresh0.05.png
+Amp_Sulbactam_Interpretación,30,0.3,euclidean,0.05,-0.07278079,umap_Amp_Sulbactam_Interpretación_n30_dist0.3_metriceuclidean_thresh0.05.png
+Amp_Sulbactam_Interpretación,30,0.3,manhattan,0.05,-0.07284826,umap_Amp_Sulbactam_Interpretación_n30_dist0.3_metricmanhattan_thresh0.05.png
+Amp_Sulbactam_Interpretación,30,0.5,euclidean,0.05,-0.07355489,umap_Amp_Sulbactam_Interpretación_n30_dist0.5_metriceuclidean_thresh0.05.png
+Amp_Sulbactam_Interpretación,30,0.5,manhattan,0.05,-0.06750715,umap_Amp_Sulbactam_Interpretación_n30_dist0.5_metricmanhattan_thresh0.05.png
+Amp_Sulbactam_Interpretación,30,0.8,euclidean,0.05,-0.06822031,umap_Amp_Sulbactam_Interpretación_n30_dist0.8_metriceuclidean_thresh0.05.png
+Amp_Sulbactam_Interpretación,30,0.8,manhattan,0.05,-0.06678087,umap_Amp_Sulbactam_Interpretación_n30_dist0.8_metricmanhattan_thresh0.05.png
+Amp_Sulbactam_Interpretación,45,0.1,euclidean,0.05,-0.07696214,umap_Amp_Sulbactam_Interpretación_n45_dist0.1_metriceuclidean_thresh0.05.png
+Amp_Sulbactam_Interpretación,45,0.1,manhattan,0.05,-0.074437685,umap_Amp_Sulbactam_Interpretación_n45_dist0.1_metricmanhattan_thresh0.05.png
+Amp_Sulbactam_Interpretación,45,0.3,euclidean,0.05,-0.07570377,umap_Amp_Sulbactam_Interpretación_n45_dist0.3_metriceuclidean_thresh0.05.png
+Amp_Sulbactam_Interpretación,45,0.3,manhattan,0.05,-0.07031774,umap_Amp_Sulbactam_Interpretación_n45_dist0.3_metricmanhattan_thresh0.05.png
+Amp_Sulbactam_Interpretación,45,0.5,euclidean,0.05,-0.07198454,umap_Amp_Sulbactam_Interpretación_n45_dist0.5_metriceuclidean_thresh0.05.png
+Amp_Sulbactam_Interpretación,45,0.5,manhattan,0.05,-0.06572358,umap_Amp_Sulbactam_Interpretación_n45_dist0.5_metricmanhattan_thresh0.05.png
+Amp_Sulbactam_Interpretación,45,0.8,euclidean,0.05,-0.06692075,umap_Amp_Sulbactam_Interpretación_n45_dist0.8_metriceuclidean_thresh0.05.png
+Amp_Sulbactam_Interpretación,45,0.8,manhattan,0.05,-0.06283002,umap_Amp_Sulbactam_Interpretación_n45_dist0.8_metricmanhattan_thresh0.05.png
+Amp_Sulbactam_Interpretación,2,0.1,euclidean,0.1,-0.016295252,umap_Amp_Sulbactam_Interpretación_n2_dist0.1_metriceuclidean_thresh0.1.png
+Amp_Sulbactam_Interpretación,2,0.1,manhattan,0.1,-0.023746574,umap_Amp_Sulbactam_Interpretación_n2_dist0.1_metricmanhattan_thresh0.1.png
+Amp_Sulbactam_Interpretación,2,0.3,euclidean,0.1,-0.023810314,umap_Amp_Sulbactam_Interpretación_n2_dist0.3_metriceuclidean_thresh0.1.png
+Amp_Sulbactam_Interpretación,2,0.3,manhattan,0.1,-0.021538975,umap_Amp_Sulbactam_Interpretación_n2_dist0.3_metricmanhattan_thresh0.1.png
+Amp_Sulbactam_Interpretación,2,0.5,euclidean,0.1,-0.010850295,umap_Amp_Sulbactam_Interpretación_n2_dist0.5_metriceuclidean_thresh0.1.png
+Amp_Sulbactam_Interpretación,2,0.5,manhattan,0.1,-0.029583404,umap_Amp_Sulbactam_Interpretación_n2_dist0.5_metricmanhattan_thresh0.1.png
+Amp_Sulbactam_Interpretación,2,0.8,euclidean,0.1,-0.017251508,umap_Amp_Sulbactam_Interpretación_n2_dist0.8_metriceuclidean_thresh0.1.png
+Amp_Sulbactam_Interpretación,2,0.8,manhattan,0.1,-0.03076135,umap_Amp_Sulbactam_Interpretación_n2_dist0.8_metricmanhattan_thresh0.1.png
+Amp_Sulbactam_Interpretación,5,0.1,euclidean,0.1,-0.017733673,umap_Amp_Sulbactam_Interpretación_n5_dist0.1_metriceuclidean_thresh0.1.png
+Amp_Sulbactam_Interpretación,5,0.1,manhattan,0.1,0.006193768,umap_Amp_Sulbactam_Interpretación_n5_dist0.1_metricmanhattan_thresh0.1.png
+Amp_Sulbactam_Interpretación,5,0.3,euclidean,0.1,-0.02114151,umap_Amp_Sulbactam_Interpretación_n5_dist0.3_metriceuclidean_thresh0.1.png
+Amp_Sulbactam_Interpretación,5,0.3,manhattan,0.1,0.0010640484,umap_Amp_Sulbactam_Interpretación_n5_dist0.3_metricmanhattan_thresh0.1.png
+Amp_Sulbactam_Interpretación,5,0.5,euclidean,0.1,-0.019596316,umap_Amp_Sulbactam_Interpretación_n5_dist0.5_metriceuclidean_thresh0.1.png
+Amp_Sulbactam_Interpretación,5,0.5,manhattan,0.1,-0.0010713164,umap_Amp_Sulbactam_Interpretación_n5_dist0.5_metricmanhattan_thresh0.1.png
+Amp_Sulbactam_Interpretación,5,0.8,euclidean,0.1,-0.02921615,umap_Amp_Sulbactam_Interpretación_n5_dist0.8_metriceuclidean_thresh0.1.png
+Amp_Sulbactam_Interpretación,5,0.8,manhattan,0.1,0.00011962634,umap_Amp_Sulbactam_Interpretación_n5_dist0.8_metricmanhattan_thresh0.1.png
+Amp_Sulbactam_Interpretación,10,0.1,euclidean,0.1,-0.005280437,umap_Amp_Sulbactam_Interpretación_n10_dist0.1_metriceuclidean_thresh0.1.png
+Amp_Sulbactam_Interpretación,10,0.1,manhattan,0.1,-0.00015713526,umap_Amp_Sulbactam_Interpretación_n10_dist0.1_metricmanhattan_thresh0.1.png
+Amp_Sulbactam_Interpretación,10,0.3,euclidean,0.1,-0.014730783,umap_Amp_Sulbactam_Interpretación_n10_dist0.3_metriceuclidean_thresh0.1.png
+Amp_Sulbactam_Interpretación,10,0.3,manhattan,0.1,0.014980358,umap_Amp_Sulbactam_Interpretación_n10_dist0.3_metricmanhattan_thresh0.1.png
+Amp_Sulbactam_Interpretación,10,0.5,euclidean,0.1,-0.018532787,umap_Amp_Sulbactam_Interpretación_n10_dist0.5_metriceuclidean_thresh0.1.png
+Amp_Sulbactam_Interpretación,10,0.5,manhattan,0.1,0.007785424,umap_Amp_Sulbactam_Interpretación_n10_dist0.5_metricmanhattan_thresh0.1.png
+Amp_Sulbactam_Interpretación,10,0.8,euclidean,0.1,-0.026129615,umap_Amp_Sulbactam_Interpretación_n10_dist0.8_metriceuclidean_thresh0.1.png
+Amp_Sulbactam_Interpretación,10,0.8,manhattan,0.1,-0.01484112,umap_Amp_Sulbactam_Interpretación_n10_dist0.8_metricmanhattan_thresh0.1.png
+Amp_Sulbactam_Interpretación,15,0.1,euclidean,0.1,-0.0023335798,umap_Amp_Sulbactam_Interpretación_n15_dist0.1_metriceuclidean_thresh0.1.png
+Amp_Sulbactam_Interpretación,15,0.1,manhattan,0.1,0.007116518,umap_Amp_Sulbactam_Interpretación_n15_dist0.1_metricmanhattan_thresh0.1.png
+Amp_Sulbactam_Interpretación,15,0.3,euclidean,0.1,-0.011436103,umap_Amp_Sulbactam_Interpretación_n15_dist0.3_metriceuclidean_thresh0.1.png
+Amp_Sulbactam_Interpretación,15,0.3,manhattan,0.1,-0.0032219202,umap_Amp_Sulbactam_Interpretación_n15_dist0.3_metricmanhattan_thresh0.1.png
+Amp_Sulbactam_Interpretación,15,0.5,euclidean,0.1,-0.018376367,umap_Amp_Sulbactam_Interpretación_n15_dist0.5_metriceuclidean_thresh0.1.png
+Amp_Sulbactam_Interpretación,15,0.5,manhattan,0.1,-0.00860589,umap_Amp_Sulbactam_Interpretación_n15_dist0.5_metricmanhattan_thresh0.1.png
+Amp_Sulbactam_Interpretación,15,0.8,euclidean,0.1,-0.023692599,umap_Amp_Sulbactam_Interpretación_n15_dist0.8_metriceuclidean_thresh0.1.png
+Amp_Sulbactam_Interpretación,15,0.8,manhattan,0.1,-0.012387593,umap_Amp_Sulbactam_Interpretación_n15_dist0.8_metricmanhattan_thresh0.1.png
+Amp_Sulbactam_Interpretación,30,0.1,euclidean,0.1,-0.0024502652,umap_Amp_Sulbactam_Interpretación_n30_dist0.1_metriceuclidean_thresh0.1.png
+Amp_Sulbactam_Interpretación,30,0.1,manhattan,0.1,0.008998295,umap_Amp_Sulbactam_Interpretación_n30_dist0.1_metricmanhattan_thresh0.1.png
+Amp_Sulbactam_Interpretación,30,0.3,euclidean,0.1,-0.013437689,umap_Amp_Sulbactam_Interpretación_n30_dist0.3_metriceuclidean_thresh0.1.png
+Amp_Sulbactam_Interpretación,30,0.3,manhattan,0.1,-0.004743781,umap_Amp_Sulbactam_Interpretación_n30_dist0.3_metricmanhattan_thresh0.1.png
+Amp_Sulbactam_Interpretación,30,0.5,euclidean,0.1,-0.017354775,umap_Amp_Sulbactam_Interpretación_n30_dist0.5_metriceuclidean_thresh0.1.png
+Amp_Sulbactam_Interpretación,30,0.5,manhattan,0.1,-0.010266093,umap_Amp_Sulbactam_Interpretación_n30_dist0.5_metricmanhattan_thresh0.1.png
+Amp_Sulbactam_Interpretación,30,0.8,euclidean,0.1,-0.02243411,umap_Amp_Sulbactam_Interpretación_n30_dist0.8_metriceuclidean_thresh0.1.png
+Amp_Sulbactam_Interpretación,30,0.8,manhattan,0.1,-0.012540716,umap_Amp_Sulbactam_Interpretación_n30_dist0.8_metricmanhattan_thresh0.1.png
+Amp_Sulbactam_Interpretación,45,0.1,euclidean,0.1,-0.0014619507,umap_Amp_Sulbactam_Interpretación_n45_dist0.1_metriceuclidean_thresh0.1.png
+Amp_Sulbactam_Interpretación,45,0.1,manhattan,0.1,0.008327311,umap_Amp_Sulbactam_Interpretación_n45_dist0.1_metricmanhattan_thresh0.1.png
+Amp_Sulbactam_Interpretación,45,0.3,euclidean,0.1,-0.012421033,umap_Amp_Sulbactam_Interpretación_n45_dist0.3_metriceuclidean_thresh0.1.png
+Amp_Sulbactam_Interpretación,45,0.3,manhattan,0.1,-0.0035682737,umap_Amp_Sulbactam_Interpretación_n45_dist0.3_metricmanhattan_thresh0.1.png
+Amp_Sulbactam_Interpretación,45,0.5,euclidean,0.1,-0.019877927,umap_Amp_Sulbactam_Interpretación_n45_dist0.5_metriceuclidean_thresh0.1.png
+Amp_Sulbactam_Interpretación,45,0.5,manhattan,0.1,-0.012289559,umap_Amp_Sulbactam_Interpretación_n45_dist0.5_metricmanhattan_thresh0.1.png
+Amp_Sulbactam_Interpretación,45,0.8,euclidean,0.1,-0.023590976,umap_Amp_Sulbactam_Interpretación_n45_dist0.8_metriceuclidean_thresh0.1.png
+Amp_Sulbactam_Interpretación,45,0.8,manhattan,0.1,-0.014767768,umap_Amp_Sulbactam_Interpretación_n45_dist0.8_metricmanhattan_thresh0.1.png
+Amp_Sulbactam_Interpretación,2,0.1,euclidean,0.15,-0.018171003,umap_Amp_Sulbactam_Interpretación_n2_dist0.1_metriceuclidean_thresh0.15.png
+Amp_Sulbactam_Interpretación,2,0.1,manhattan,0.15,-0.02255776,umap_Amp_Sulbactam_Interpretación_n2_dist0.1_metricmanhattan_thresh0.15.png
+Amp_Sulbactam_Interpretación,2,0.3,euclidean,0.15,-0.018265309,umap_Amp_Sulbactam_Interpretación_n2_dist0.3_metriceuclidean_thresh0.15.png
+Amp_Sulbactam_Interpretación,2,0.3,manhattan,0.15,-0.022651529,umap_Amp_Sulbactam_Interpretación_n2_dist0.3_metricmanhattan_thresh0.15.png
+Amp_Sulbactam_Interpretación,2,0.5,euclidean,0.15,-0.016269995,umap_Amp_Sulbactam_Interpretación_n2_dist0.5_metriceuclidean_thresh0.15.png
+Amp_Sulbactam_Interpretación,2,0.5,manhattan,0.15,-0.018472591,umap_Amp_Sulbactam_Interpretación_n2_dist0.5_metricmanhattan_thresh0.15.png
+Amp_Sulbactam_Interpretación,2,0.8,euclidean,0.15,-0.025874382,umap_Amp_Sulbactam_Interpretación_n2_dist0.8_metriceuclidean_thresh0.15.png
+Amp_Sulbactam_Interpretación,2,0.8,manhattan,0.15,-0.040054027,umap_Amp_Sulbactam_Interpretación_n2_dist0.8_metricmanhattan_thresh0.15.png
+Amp_Sulbactam_Interpretación,5,0.1,euclidean,0.15,-0.011519092,umap_Amp_Sulbactam_Interpretación_n5_dist0.1_metriceuclidean_thresh0.15.png
+Amp_Sulbactam_Interpretación,5,0.1,manhattan,0.15,-0.010723967,umap_Amp_Sulbactam_Interpretación_n5_dist0.1_metricmanhattan_thresh0.15.png
+Amp_Sulbactam_Interpretación,5,0.3,euclidean,0.15,-0.009886595,umap_Amp_Sulbactam_Interpretación_n5_dist0.3_metriceuclidean_thresh0.15.png
+Amp_Sulbactam_Interpretación,5,0.3,manhattan,0.15,-0.013904717,umap_Amp_Sulbactam_Interpretación_n5_dist0.3_metricmanhattan_thresh0.15.png
+Amp_Sulbactam_Interpretación,5,0.5,euclidean,0.15,-0.00680458,umap_Amp_Sulbactam_Interpretación_n5_dist0.5_metriceuclidean_thresh0.15.png
+Amp_Sulbactam_Interpretación,5,0.5,manhattan,0.15,-0.012736553,umap_Amp_Sulbactam_Interpretación_n5_dist0.5_metricmanhattan_thresh0.15.png
+Amp_Sulbactam_Interpretación,5,0.8,euclidean,0.15,-0.0066462597,umap_Amp_Sulbactam_Interpretación_n5_dist0.8_metriceuclidean_thresh0.15.png
+Amp_Sulbactam_Interpretación,5,0.8,manhattan,0.15,-0.008613894,umap_Amp_Sulbactam_Interpretación_n5_dist0.8_metricmanhattan_thresh0.15.png
+Amp_Sulbactam_Interpretación,10,0.1,euclidean,0.15,-0.019698864,umap_Amp_Sulbactam_Interpretación_n10_dist0.1_metriceuclidean_thresh0.15.png
+Amp_Sulbactam_Interpretación,10,0.1,manhattan,0.15,-0.019414054,umap_Amp_Sulbactam_Interpretación_n10_dist0.1_metricmanhattan_thresh0.15.png
+Amp_Sulbactam_Interpretación,10,0.3,euclidean,0.15,-0.015714848,umap_Amp_Sulbactam_Interpretación_n10_dist0.3_metriceuclidean_thresh0.15.png
+Amp_Sulbactam_Interpretación,10,0.3,manhattan,0.15,-0.010601189,umap_Amp_Sulbactam_Interpretación_n10_dist0.3_metricmanhattan_thresh0.15.png
+Amp_Sulbactam_Interpretación,10,0.5,euclidean,0.15,-0.013496267,umap_Amp_Sulbactam_Interpretación_n10_dist0.5_metriceuclidean_thresh0.15.png
+Amp_Sulbactam_Interpretación,10,0.5,manhattan,0.15,-0.005069415,umap_Amp_Sulbactam_Interpretación_n10_dist0.5_metricmanhattan_thresh0.15.png
+Amp_Sulbactam_Interpretación,10,0.8,euclidean,0.15,-0.0058198995,umap_Amp_Sulbactam_Interpretación_n10_dist0.8_metriceuclidean_thresh0.15.png
+Amp_Sulbactam_Interpretación,10,0.8,manhattan,0.15,-0.0018675196,umap_Amp_Sulbactam_Interpretación_n10_dist0.8_metricmanhattan_thresh0.15.png
+Amp_Sulbactam_Interpretación,15,0.1,euclidean,0.15,-0.02710474,umap_Amp_Sulbactam_Interpretación_n15_dist0.1_metriceuclidean_thresh0.15.png
+Amp_Sulbactam_Interpretación,15,0.1,manhattan,0.15,-0.023513163,umap_Amp_Sulbactam_Interpretación_n15_dist0.1_metricmanhattan_thresh0.15.png
+Amp_Sulbactam_Interpretación,15,0.3,euclidean,0.15,-0.019691434,umap_Amp_Sulbactam_Interpretación_n15_dist0.3_metriceuclidean_thresh0.15.png
+Amp_Sulbactam_Interpretación,15,0.3,manhattan,0.15,-0.020011485,umap_Amp_Sulbactam_Interpretación_n15_dist0.3_metricmanhattan_thresh0.15.png
+Amp_Sulbactam_Interpretación,15,0.5,euclidean,0.15,-0.01239477,umap_Amp_Sulbactam_Interpretación_n15_dist0.5_metriceuclidean_thresh0.15.png
+Amp_Sulbactam_Interpretación,15,0.5,manhattan,0.15,-0.011444164,umap_Amp_Sulbactam_Interpretación_n15_dist0.5_metricmanhattan_thresh0.15.png
+Amp_Sulbactam_Interpretación,15,0.8,euclidean,0.15,-0.0056015803,umap_Amp_Sulbactam_Interpretación_n15_dist0.8_metriceuclidean_thresh0.15.png
+Amp_Sulbactam_Interpretación,15,0.8,manhattan,0.15,-0.0025419858,umap_Amp_Sulbactam_Interpretación_n15_dist0.8_metricmanhattan_thresh0.15.png
+Amp_Sulbactam_Interpretación,30,0.1,euclidean,0.15,-0.033621784,umap_Amp_Sulbactam_Interpretación_n30_dist0.1_metriceuclidean_thresh0.15.png
+Amp_Sulbactam_Interpretación,30,0.1,manhattan,0.15,-0.030871384,umap_Amp_Sulbactam_Interpretación_n30_dist0.1_metricmanhattan_thresh0.15.png
+Amp_Sulbactam_Interpretación,30,0.3,euclidean,0.15,-0.021921247,umap_Amp_Sulbactam_Interpretación_n30_dist0.3_metriceuclidean_thresh0.15.png
+Amp_Sulbactam_Interpretación,30,0.3,manhattan,0.15,-0.019969514,umap_Amp_Sulbactam_Interpretación_n30_dist0.3_metricmanhattan_thresh0.15.png
+Amp_Sulbactam_Interpretación,30,0.5,euclidean,0.15,-0.016566824,umap_Amp_Sulbactam_Interpretación_n30_dist0.5_metriceuclidean_thresh0.15.png
+Amp_Sulbactam_Interpretación,30,0.5,manhattan,0.15,-0.010638507,umap_Amp_Sulbactam_Interpretación_n30_dist0.5_metricmanhattan_thresh0.15.png
+Amp_Sulbactam_Interpretación,30,0.8,euclidean,0.15,-0.00020630567,umap_Amp_Sulbactam_Interpretación_n30_dist0.8_metriceuclidean_thresh0.15.png
+Amp_Sulbactam_Interpretación,30,0.8,manhattan,0.15,-0.0071060397,umap_Amp_Sulbactam_Interpretación_n30_dist0.8_metricmanhattan_thresh0.15.png
+Amp_Sulbactam_Interpretación,45,0.1,euclidean,0.15,-0.03863269,umap_Amp_Sulbactam_Interpretación_n45_dist0.1_metriceuclidean_thresh0.15.png
+Amp_Sulbactam_Interpretación,45,0.1,manhattan,0.15,-0.03500703,umap_Amp_Sulbactam_Interpretación_n45_dist0.1_metricmanhattan_thresh0.15.png
+Amp_Sulbactam_Interpretación,45,0.3,euclidean,0.15,-0.026004506,umap_Amp_Sulbactam_Interpretación_n45_dist0.3_metriceuclidean_thresh0.15.png
+Amp_Sulbactam_Interpretación,45,0.3,manhattan,0.15,-0.02590637,umap_Amp_Sulbactam_Interpretación_n45_dist0.3_metricmanhattan_thresh0.15.png
+Amp_Sulbactam_Interpretación,45,0.5,euclidean,0.15,-0.018928979,umap_Amp_Sulbactam_Interpretación_n45_dist0.5_metriceuclidean_thresh0.15.png
+Amp_Sulbactam_Interpretación,45,0.5,manhattan,0.15,-0.011427267,umap_Amp_Sulbactam_Interpretación_n45_dist0.5_metricmanhattan_thresh0.15.png
+Amp_Sulbactam_Interpretación,45,0.8,euclidean,0.15,-0.014059965,umap_Amp_Sulbactam_Interpretación_n45_dist0.8_metriceuclidean_thresh0.15.png
+Amp_Sulbactam_Interpretación,45,0.8,manhattan,0.15,-0.0075857784,umap_Amp_Sulbactam_Interpretación_n45_dist0.8_metricmanhattan_thresh0.15.png
+Amp_Sulbactam_Interpretación,2,0.1,euclidean,0.2,-0.0045664804,umap_Amp_Sulbactam_Interpretación_n2_dist0.1_metriceuclidean_thresh0.2.png
+Amp_Sulbactam_Interpretación,2,0.1,manhattan,0.2,-0.0057080537,umap_Amp_Sulbactam_Interpretación_n2_dist0.1_metricmanhattan_thresh0.2.png
+Amp_Sulbactam_Interpretación,2,0.3,euclidean,0.2,-0.022882897,umap_Amp_Sulbactam_Interpretación_n2_dist0.3_metriceuclidean_thresh0.2.png
+Amp_Sulbactam_Interpretación,2,0.3,manhattan,0.2,-0.012607795,umap_Amp_Sulbactam_Interpretación_n2_dist0.3_metricmanhattan_thresh0.2.png
+Amp_Sulbactam_Interpretación,2,0.5,euclidean,0.2,-0.0058766515,umap_Amp_Sulbactam_Interpretación_n2_dist0.5_metriceuclidean_thresh0.2.png
+Amp_Sulbactam_Interpretación,2,0.5,manhattan,0.2,-0.017628545,umap_Amp_Sulbactam_Interpretación_n2_dist0.5_metricmanhattan_thresh0.2.png
+Amp_Sulbactam_Interpretación,2,0.8,euclidean,0.2,-0.026767401,umap_Amp_Sulbactam_Interpretación_n2_dist0.8_metriceuclidean_thresh0.2.png
+Amp_Sulbactam_Interpretación,2,0.8,manhattan,0.2,-0.007271875,umap_Amp_Sulbactam_Interpretación_n2_dist0.8_metricmanhattan_thresh0.2.png
+Amp_Sulbactam_Interpretación,5,0.1,euclidean,0.2,-0.03658525,umap_Amp_Sulbactam_Interpretación_n5_dist0.1_metriceuclidean_thresh0.2.png
+Amp_Sulbactam_Interpretación,5,0.1,manhattan,0.2,-0.028440474,umap_Amp_Sulbactam_Interpretación_n5_dist0.1_metricmanhattan_thresh0.2.png
+Amp_Sulbactam_Interpretación,5,0.3,euclidean,0.2,-0.04065347,umap_Amp_Sulbactam_Interpretación_n5_dist0.3_metriceuclidean_thresh0.2.png
+Amp_Sulbactam_Interpretación,5,0.3,manhattan,0.2,-0.040771287,umap_Amp_Sulbactam_Interpretación_n5_dist0.3_metricmanhattan_thresh0.2.png
+Amp_Sulbactam_Interpretación,5,0.5,euclidean,0.2,-0.035899222,umap_Amp_Sulbactam_Interpretación_n5_dist0.5_metriceuclidean_thresh0.2.png
+Amp_Sulbactam_Interpretación,5,0.5,manhattan,0.2,-0.035632007,umap_Amp_Sulbactam_Interpretación_n5_dist0.5_metricmanhattan_thresh0.2.png
+Amp_Sulbactam_Interpretación,5,0.8,euclidean,0.2,-0.034169942,umap_Amp_Sulbactam_Interpretación_n5_dist0.8_metriceuclidean_thresh0.2.png
+Amp_Sulbactam_Interpretación,5,0.8,manhattan,0.2,-0.03421555,umap_Amp_Sulbactam_Interpretación_n5_dist0.8_metricmanhattan_thresh0.2.png
+Amp_Sulbactam_Interpretación,10,0.1,euclidean,0.2,-0.047194816,umap_Amp_Sulbactam_Interpretación_n10_dist0.1_metriceuclidean_thresh0.2.png
+Amp_Sulbactam_Interpretación,10,0.1,manhattan,0.2,-0.048190378,umap_Amp_Sulbactam_Interpretación_n10_dist0.1_metricmanhattan_thresh0.2.png
+Amp_Sulbactam_Interpretación,10,0.3,euclidean,0.2,-0.043456826,umap_Amp_Sulbactam_Interpretación_n10_dist0.3_metriceuclidean_thresh0.2.png
+Amp_Sulbactam_Interpretación,10,0.3,manhattan,0.2,-0.044218473,umap_Amp_Sulbactam_Interpretación_n10_dist0.3_metricmanhattan_thresh0.2.png
+Amp_Sulbactam_Interpretación,10,0.5,euclidean,0.2,-0.041925788,umap_Amp_Sulbactam_Interpretación_n10_dist0.5_metriceuclidean_thresh0.2.png
+Amp_Sulbactam_Interpretación,10,0.5,manhattan,0.2,-0.04282596,umap_Amp_Sulbactam_Interpretación_n10_dist0.5_metricmanhattan_thresh0.2.png
+Amp_Sulbactam_Interpretación,10,0.8,euclidean,0.2,-0.040138904,umap_Amp_Sulbactam_Interpretación_n10_dist0.8_metriceuclidean_thresh0.2.png
+Amp_Sulbactam_Interpretación,10,0.8,manhattan,0.2,-0.038213935,umap_Amp_Sulbactam_Interpretación_n10_dist0.8_metricmanhattan_thresh0.2.png
+Amp_Sulbactam_Interpretación,15,0.1,euclidean,0.2,-0.056138225,umap_Amp_Sulbactam_Interpretación_n15_dist0.1_metriceuclidean_thresh0.2.png
+Amp_Sulbactam_Interpretación,15,0.1,manhattan,0.2,-0.05438796,umap_Amp_Sulbactam_Interpretación_n15_dist0.1_metricmanhattan_thresh0.2.png
+Amp_Sulbactam_Interpretación,15,0.3,euclidean,0.2,-0.048580524,umap_Amp_Sulbactam_Interpretación_n15_dist0.3_metriceuclidean_thresh0.2.png
+Amp_Sulbactam_Interpretación,15,0.3,manhattan,0.2,-0.04804041,umap_Amp_Sulbactam_Interpretación_n15_dist0.3_metricmanhattan_thresh0.2.png
+Amp_Sulbactam_Interpretación,15,0.5,euclidean,0.2,-0.04419727,umap_Amp_Sulbactam_Interpretación_n15_dist0.5_metriceuclidean_thresh0.2.png
+Amp_Sulbactam_Interpretación,15,0.5,manhattan,0.2,-0.043508645,umap_Amp_Sulbactam_Interpretación_n15_dist0.5_metricmanhattan_thresh0.2.png
+Amp_Sulbactam_Interpretación,15,0.8,euclidean,0.2,-0.04068457,umap_Amp_Sulbactam_Interpretación_n15_dist0.8_metriceuclidean_thresh0.2.png
+Amp_Sulbactam_Interpretación,15,0.8,manhattan,0.2,-0.042388685,umap_Amp_Sulbactam_Interpretación_n15_dist0.8_metricmanhattan_thresh0.2.png
+Amp_Sulbactam_Interpretación,30,0.1,euclidean,0.2,-0.059649307,umap_Amp_Sulbactam_Interpretación_n30_dist0.1_metriceuclidean_thresh0.2.png
+Amp_Sulbactam_Interpretación,30,0.1,manhattan,0.2,-0.057562754,umap_Amp_Sulbactam_Interpretación_n30_dist0.1_metricmanhattan_thresh0.2.png
+Amp_Sulbactam_Interpretación,30,0.3,euclidean,0.2,-0.05030367,umap_Amp_Sulbactam_Interpretación_n30_dist0.3_metriceuclidean_thresh0.2.png
+Amp_Sulbactam_Interpretación,30,0.3,manhattan,0.2,-0.04981787,umap_Amp_Sulbactam_Interpretación_n30_dist0.3_metricmanhattan_thresh0.2.png
+Amp_Sulbactam_Interpretación,30,0.5,euclidean,0.2,-0.04592464,umap_Amp_Sulbactam_Interpretación_n30_dist0.5_metriceuclidean_thresh0.2.png
+Amp_Sulbactam_Interpretación,30,0.5,manhattan,0.2,-0.04627316,umap_Amp_Sulbactam_Interpretación_n30_dist0.5_metricmanhattan_thresh0.2.png
+Amp_Sulbactam_Interpretación,30,0.8,euclidean,0.2,-0.042221267,umap_Amp_Sulbactam_Interpretación_n30_dist0.8_metriceuclidean_thresh0.2.png
+Amp_Sulbactam_Interpretación,30,0.8,manhattan,0.2,-0.043964725,umap_Amp_Sulbactam_Interpretación_n30_dist0.8_metricmanhattan_thresh0.2.png
+Amp_Sulbactam_Interpretación,45,0.1,euclidean,0.2,-0.06166788,umap_Amp_Sulbactam_Interpretación_n45_dist0.1_metriceuclidean_thresh0.2.png
+Amp_Sulbactam_Interpretación,45,0.1,manhattan,0.2,-0.061473086,umap_Amp_Sulbactam_Interpretación_n45_dist0.1_metricmanhattan_thresh0.2.png
+Amp_Sulbactam_Interpretación,45,0.3,euclidean,0.2,-0.05130137,umap_Amp_Sulbactam_Interpretación_n45_dist0.3_metriceuclidean_thresh0.2.png
+Amp_Sulbactam_Interpretación,45,0.3,manhattan,0.2,-0.05357994,umap_Amp_Sulbactam_Interpretación_n45_dist0.3_metricmanhattan_thresh0.2.png
+Amp_Sulbactam_Interpretación,45,0.5,euclidean,0.2,-0.04868387,umap_Amp_Sulbactam_Interpretación_n45_dist0.5_metriceuclidean_thresh0.2.png
+Amp_Sulbactam_Interpretación,45,0.5,manhattan,0.2,-0.04888629,umap_Amp_Sulbactam_Interpretación_n45_dist0.5_metricmanhattan_thresh0.2.png
+Amp_Sulbactam_Interpretación,45,0.8,euclidean,0.2,-0.04324303,umap_Amp_Sulbactam_Interpretación_n45_dist0.8_metriceuclidean_thresh0.2.png
+Amp_Sulbactam_Interpretación,45,0.8,manhattan,0.2,-0.045051444,umap_Amp_Sulbactam_Interpretación_n45_dist0.8_metricmanhattan_thresh0.2.png
