@@ -46,9 +46,9 @@ color_map = {'R': '#da0d91', 'S': '#07b457', 'I': '#f4a742'}
 
 # Define the grid of hyperparameters for UMAP and feature selection
 n_neighbors_list = [2, 5, 10, 15, 30, 45]  # Different neighborhood sizes
-min_dist_list = [0.1, 0.3, 0.5]  # Different minimum distances
+min_dist_list = [0.1, 0.3, 0.5, 0.8]  # Different minimum distances
 metric_list = ['euclidean', 'manhattan']  # Different distance metrics
-variance_threshold_list = [0.01, 0.05, 0.1]  # Different thresholds for variance selection
+variance_threshold_list = [0.01, 0.05, 0.1, 0.2, 0.3, 0.5]  # Different thresholds for variance selection
 
 # Perform feature selection using Variance Thresholding
 def select_features_by_variance(X, threshold=0.1):

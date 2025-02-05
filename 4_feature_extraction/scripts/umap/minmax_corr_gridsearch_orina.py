@@ -8,12 +8,12 @@ from sklearn.metrics import silhouette_score
 
 # Define paths
 preprocessed_dir = '/export/usuarios01/ilmareca/github/MaldiTof-BacteriaID-GregorioMaranon/3_data_preprocessing/scripts/outputs'
-output_dir = '/export/usuarios01/ilmareca/github/MaldiTof-BacteriaID-GregorioMaranon/4_feature_extraction/scripts/umap/figures/minmax_corr'
-score_output_file = os.path.join('/export/usuarios01/ilmareca/github/MaldiTof-BacteriaID-GregorioMaranon/4_feature_extraction/scripts/umap/outputs', 'umap_minmax_corr_grid.csv')
+output_dir = '/export/usuarios01/ilmareca/github/MaldiTof-BacteriaID-GregorioMaranon/4_feature_extraction/scripts/umap/figures/minmax_corr_orina'
+score_output_file = os.path.join('/export/usuarios01/ilmareca/github/MaldiTof-BacteriaID-GregorioMaranon/4_feature_extraction/scripts/umap/outputs', 'umap_minmax_corr_grid_orina.csv')
 os.makedirs('/export/usuarios01/ilmareca/github/MaldiTof-BacteriaID-GregorioMaranon/4_feature_extraction/scripts/umap/outputs', exist_ok=True)
 X_path = os.path.join(preprocessed_dir, 'X_klebsiella.pkl')
 y_path = os.path.join(preprocessed_dir, 'y_klebsiella.pkl')
-csv_path = os.path.join('/export/usuarios01/ilmareca/github/MaldiTof-BacteriaID-GregorioMaranon/1_data_cleaning/scripts/HGUGM/1_4_clean_amr_csv/outputs', 'result_amr_20250203_175832_AmpSulbactam.csv')
+csv_path = os.path.join('/export/usuarios01/ilmareca/github/MaldiTof-BacteriaID-GregorioMaranon/1_data_cleaning/scripts/HGUGM/1_4_clean_amr_csv/outputs', 'result_amr_20250205_180301_orina.csv')
 
 # Load the preprocessed data
 X = joblib.load(X_path)
@@ -43,11 +43,12 @@ antibiotics = [col for col in df_amr.columns if 'Interpretación' in col]
 # Define colors for labels
 color_map = {'R': '#da0d91', 'S': '#07b457', 'I': '#f4a742'}
 
-# Define the grid of hyperparameters for UMAP and feature selection
-n_neighbors_list = [2, 5, 10, 15, 30, 45]  # Different neighborhood sizes
+n_neighbors_list = [15, 20, 30, 45]  # Different neighborhood sizes
 min_dist_list = [0.1, 0.3, 0.5, 0.8]  # Different minimum distances
 metric_list = ['euclidean', 'manhattan']  # Different distance metrics
-threshold_list = [0.05, 0.1, 0.15, 0.2, 0.3]  # Different thresholds for feature selection
+threshold_list = [0.05, 0.1, 0.15, 0.2, 0.3, 0.5]  # Different thresholds for feature selection
+
+
 
 # Perform feature selection based on correlation
 def select_features_by_correlation(df, labels_col, threshold=0.1):
