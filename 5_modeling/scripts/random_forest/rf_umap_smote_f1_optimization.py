@@ -4,13 +4,13 @@ import pandas as pd
 import umap
 from sklearn.preprocessing import MinMaxScaler
 from sklearn.metrics import classification_report, accuracy_score
-from sklearn.model_selection import train_test_split
+from sklearn.model_selection import train_test_split, GridSearchCV
 from sklearn.ensemble import RandomForestClassifier
-from imblearn.over_sampling import SMOTE  # SMOTE para manejar clases desbalanceadas
+from imblearn.combine import SMOTETomek  # Cambio de SMOTE a SMOTETomek para manejar mejor el desbalance
 
 # Define paths
 preprocessed_dir = '/export/usuarios01/ilmareca/github/MaldiTof-BacteriaID-GregorioMaranon/3_data_preprocessing/scripts/outputs'
-grid_search_results_file = os.path.join('/export/usuarios01/ilmareca/github/MaldiTof-BacteriaID-GregorioMaranon/5_modeling/scripts/random_forest/outputs', 'grid_search_rf_with_smote_results.csv')
+grid_search_results_file = os.path.join('/export/usuarios01/ilmareca/github/MaldiTof-BacteriaID-GregorioMaranon/5_modeling/scripts/random_forest/outputs', 'rf_umap_smote_f1_optimization.csv')
 os.makedirs(os.path.dirname(grid_search_results_file), exist_ok=True)
 X_path = os.path.join(preprocessed_dir, 'X_klebsiella.pkl')
 y_path = os.path.join(preprocessed_dir, 'y_klebsiella.pkl')
@@ -49,35 +49,54 @@ df_filtered = df_filtered[df_filtered[antibiotic].isin(['R', 'S', 'I'])]
 labels = df_filtered[antibiotic].map({'R': 0, 'S': 1, 'I': 2}).values
 X_filtered = df_filtered.drop(columns=['extern_id', antibiotic]).values
 
-# Apply UMAP
-reducer = umap.UMAP(n_neighbors=30, min_dist=0.3, metric='euclidean', random_state=42)
+# Apply UMAP with finer neighborhood structure
+reducer = umap.UMAP(n_neighbors=15, min_dist=0.2, metric='euclidean', random_state=42)
 X_umap = reducer.fit_transform(X_filtered)
 
-# Apply SMOTE to balance the classes
-smote = SMOTE(random_state=42)
-X_resampled, y_resampled = smote.fit_resample(X_umap, labels)
+# Apply SMOTETomek to balance the classes
+smote_tomek = SMOTETomek(random_state=42)
+X_resampled, y_resampled = smote_tomek.fit_resample(X_umap, labels)
 
-# Split the data into training and test sets
-X_train, X_test, y_train, y_test = train_test_split(X_resampled, y_resampled, test_size=0.3, random_state=42)
+# Reduce test set size for additional training data
+X_train, X_test, y_train, y_test = train_test_split(X_resampled, y_resampled, test_size=0.2, random_state=42)
 
-# Train Random Forest model with class weights
-rf_model = RandomForestClassifier(
-    n_estimators=100,
-    max_depth=None,
-    min_samples_split=2,
-    random_state=42,
-    class_weight='balanced'  # Penalización para clases desbalanceadas
+# Refine GridSearch parameters with finer increments
+param_grid = {
+    'n_estimators': [200, 500, 1000, 1200],
+    'max_depth': [15, 20, 30, 40],
+    'min_samples_split': [2, 4, 6, 10],
+    'min_samples_leaf': [1, 2, 3],
+    'max_features': ['sqrt', 'log2'],
+    'class_weight': ['balanced', 'balanced_subsample']
+}
+
+# Initialize Random Forest
+rf_model = RandomForestClassifier(random_state=42)
+
+# Apply GridSearchCV optimizing f1_macro
+grid_search = GridSearchCV(
+    estimator=rf_model, 
+    param_grid=param_grid, 
+    cv=3, 
+    scoring='f1_macro', 
+    n_jobs=-1, 
+    verbose=2
 )
-rf_model.fit(X_train, y_train)
+grid_search.fit(X_train, y_train)
+
+# Get the best model
+best_model = grid_search.best_estimator_
 
 # Make predictions
-y_pred = rf_model.predict(X_test)
+y_pred = best_model.predict(X_test)
 
 # Evaluate the model
 accuracy = accuracy_score(y_test, y_pred)
 report = classification_report(y_test, y_pred, target_names=['R', 'S', 'I'])
 
 # Print results
+print("Best parameters found by GridSearchCV:")
+print(grid_search.best_params_)
 print(f"Accuracy: {accuracy:.3f}")
 print("Classification Report:")
 print(report)
@@ -86,13 +105,14 @@ print(report)
 results_dict = classification_report(y_test, y_pred, output_dict=True)
 results_df = pd.DataFrame([{
     'Accuracy': accuracy,
-    'Precision_R': results_dict['0']['precision'],  # Cambiar 'R' por '0'
+    'Best_Params': str(grid_search.best_params_),
+    'Precision_R': results_dict['0']['precision'],
     'Recall_R': results_dict['0']['recall'],
     'F1_R': results_dict['0']['f1-score'],
-    'Precision_S': results_dict['1']['precision'],  # Cambiar 'S' por '1'
+    'Precision_S': results_dict['1']['precision'],
     'Recall_S': results_dict['1']['recall'],
     'F1_S': results_dict['1']['f1-score'],
-    'Precision_I': results_dict['2']['precision'],  # Cambiar 'I' por '2'
+    'Precision_I': results_dict['2']['precision'],
     'Recall_I': results_dict['2']['recall'],
     'F1_I': results_dict['2']['f1-score']
 }])
