@@ -8,7 +8,7 @@ from sklearn.ensemble import RandomForestClassifier
 
 # Define paths
 preprocessed_dir = '/export/usuarios01/ilmareca/github/MaldiTof-BacteriaID-GregorioMaranon/3_data_preprocessing/scripts/outputs'
-grid_search_results_file = os.path.join('/export/usuarios01/ilmareca/github/MaldiTof-BacteriaID-GregorioMaranon/5_modeling/scripts/random_forest/outputs', 'random_forest_gridsearch_orina.csv')
+grid_search_results_file = os.path.join('/export/usuarios01/ilmareca/github/MaldiTof-BacteriaID-GregorioMaranon/5_modeling/scripts/random_forest/outputs', 'raw_random_forest_gridsearch.csv')
 os.makedirs(os.path.dirname(grid_search_results_file), exist_ok=True)
 X_path = os.path.join(preprocessed_dir, 'X_klebsiella.pkl')
 y_path = os.path.join(preprocessed_dir, 'y_klebsiella.pkl')
@@ -19,8 +19,7 @@ X = joblib.load(X_path)
 y = joblib.load(y_path)
 
 # Normalize using MinMaxScaler
-scaler = MinMaxScaler()
-X_scaled = scaler.fit_transform(X)
+
 
 # Load the CSV file with antibiotic resistance information
 df_amr = pd.read_csv(csv_path)
@@ -30,7 +29,7 @@ df_amr['extern_id'] = df_amr['extern_id'].astype(str).str.zfill(8)
 y_sample = [str(extern_id).zfill(8) for extern_id in y]
 
 # Create a DataFrame for the spectra
-df_spectra = pd.DataFrame(X_scaled, columns=[f"mz_{i}" for i in range(X_scaled.shape[1])])
+df_spectra = pd.DataFrame(X, columns=[f"mz_{i}" for i in range(X.shape[1])])
 df_spectra['extern_id'] = y_sample
 
 # Merge the data on extern_id

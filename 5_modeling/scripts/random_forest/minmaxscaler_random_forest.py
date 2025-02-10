@@ -3,16 +3,18 @@ import joblib
 import pandas as pd
 from sklearn.preprocessing import MinMaxScaler
 from sklearn.metrics import classification_report, accuracy_score
-from sklearn.model_selection import train_test_split, GridSearchCV
+from sklearn.model_selection import train_test_split, GridSearchCV, StratifiedKFold
 from sklearn.ensemble import RandomForestClassifier
+from imblearn.pipeline import Pipeline
+from imblearn.over_sampling import SMOTE
 
 # Define paths
 preprocessed_dir = '/export/usuarios01/ilmareca/github/MaldiTof-BacteriaID-GregorioMaranon/3_data_preprocessing/scripts/outputs'
-grid_search_results_file = os.path.join('/export/usuarios01/ilmareca/github/MaldiTof-BacteriaID-GregorioMaranon/5_modeling/scripts/random_forest/outputs', 'random_forest_gridsearch_orina.csv')
+grid_search_results_file = os.path.join('/export/usuarios01/ilmareca/github/MaldiTof-BacteriaID-GregorioMaranon/5_modeling/scripts/random_forest/outputs', 'minmaxscaler_random_forest.csv')
 os.makedirs(os.path.dirname(grid_search_results_file), exist_ok=True)
 X_path = os.path.join(preprocessed_dir, 'X_klebsiella.pkl')
 y_path = os.path.join(preprocessed_dir, 'y_klebsiella.pkl')
-csv_path = os.path.join('/export/usuarios01/ilmareca/github/MaldiTof-BacteriaID-GregorioMaranon/1_data_cleaning/scripts/HGUGM/1_4_clean_amr_csv/outputs', 'result_amr_20250205_180301_orina.csv')
+csv_path = os.path.join('/export/usuarios01/ilmareca/github/MaldiTof-BacteriaID-GregorioMaranon/1_data_cleaning/scripts/HGUGM/1_4_clean_amr_csv/outputs', 'result_amr_20250203_175832_AmpSulbactam.csv')
 
 # Load the preprocessed data
 X = joblib.load(X_path)
