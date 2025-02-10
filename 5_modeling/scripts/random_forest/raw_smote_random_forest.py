@@ -1,16 +1,15 @@
 import os
 import joblib
 import pandas as pd
+from imblearn.over_sampling import SMOTE
 from sklearn.preprocessing import MinMaxScaler
 from sklearn.metrics import classification_report, accuracy_score
-from sklearn.model_selection import train_test_split, GridSearchCV, StratifiedKFold
+from sklearn.model_selection import train_test_split, GridSearchCV
 from sklearn.ensemble import RandomForestClassifier
-from imblearn.under_sampling import RandomUnderSampler
-from collections import Counter
 
 # Define paths
 preprocessed_dir = '/export/usuarios01/ilmareca/github/MaldiTof-BacteriaID-GregorioMaranon/3_data_preprocessing/scripts/outputs'
-grid_search_results_file = os.path.join('/export/usuarios01/ilmareca/github/MaldiTof-BacteriaID-GregorioMaranon/5_modeling/scripts/random_forest/outputs', 'undersampling_random_forest.csv')
+grid_search_results_file = os.path.join('/export/usuarios01/ilmareca/github/MaldiTof-BacteriaID-GregorioMaranon/5_modeling/scripts/random_forest/outputs', 'raw_smote_random_forest_gridsearch.csv')
 os.makedirs(os.path.dirname(grid_search_results_file), exist_ok=True)
 X_path = os.path.join(preprocessed_dir, 'X_klebsiella.pkl')
 y_path = os.path.join(preprocessed_dir, 'y_klebsiella.pkl')
@@ -20,10 +19,6 @@ csv_path = os.path.join('/export/usuarios01/ilmareca/github/MaldiTof-BacteriaID-
 X = joblib.load(X_path)
 y = joblib.load(y_path)
 
-# Normalize using MinMaxScaler
-scaler = MinMaxScaler()
-X_scaled = scaler.fit_transform(X)
-
 # Load the CSV file with antibiotic resistance information
 df_amr = pd.read_csv(csv_path)
 
@@ -32,7 +27,7 @@ df_amr['extern_id'] = df_amr['extern_id'].astype(str).str.zfill(8)
 y_sample = [str(extern_id).zfill(8) for extern_id in y]
 
 # Create a DataFrame for the spectra
-df_spectra = pd.DataFrame(X_scaled, columns=[f"mz_{i}" for i in range(X_scaled.shape[1])])
+df_spectra = pd.DataFrame(X, columns=[f"mz_{i}" for i in range(X.shape[1])])
 df_spectra['extern_id'] = y_sample
 
 # Merge the data on extern_id
@@ -52,17 +47,11 @@ X_filtered = df_filtered.drop(columns=['extern_id', antibiotic]).values
 # Split the data into training and test sets
 X_train, X_test, y_train, y_test = train_test_split(X_filtered, labels, test_size=0.35, random_state=42)
 
-# Observa la distribución original de clases
-print("Distribución de clases antes del undersampling:", Counter(y_train))
+# Apply SMOTE only to the training set
+smote = SMOTE(random_state=42)
+X_train_smote, y_train_smote = smote.fit_resample(X_train, y_train)
 
-# Aplica RandomUnderSampler para balancear las clases
-under_sampler = RandomUnderSampler(random_state=42)
-X_train_resampled, y_train_resampled = under_sampler.fit_resample(X_train, y_train)
-
-# Verifica la nueva distribución de clases
-print("Distribución de clases después del undersampling:", Counter(y_train_resampled))
-
-# Define los parámetros del Random Forest y GridSearch
+# Define Random Forest and GridSearch parameters
 param_grid = {
     'n_estimators': [200, 500, 1000],
     'max_depth': [15, 20, 30],
@@ -72,33 +61,31 @@ param_grid = {
     'class_weight': ['balanced', 'balanced_subsample']
 }
 
-# Inicializa Random Forest
+# Initialize Random Forest
 rf_model = RandomForestClassifier(random_state=42)
 
-# Aplica GridSearchCV con el conjunto submuestreado
+# Apply GridSearchCV optimizing f1_macro
 grid_search = GridSearchCV(
-    estimator=rf_model,
-    param_grid=param_grid,
-    cv=StratifiedKFold(n_splits=3, shuffle=True, random_state=42),
-    scoring='f1_macro',
-    n_jobs=-1,
+    estimator=rf_model, 
+    param_grid=param_grid, 
+    cv=3, 
+    scoring='f1_macro', 
+    n_jobs=-1, 
     verbose=2
 )
+grid_search.fit(X_train_smote, y_train_smote)
 
-# Entrena el modelo con los datos submuestreados
-grid_search.fit(X_train_resampled, y_train_resampled)
-
-# Obtén el mejor modelo
+# Get the best model
 best_model = grid_search.best_estimator_
 
-# Realiza predicciones en el conjunto de prueba
+# Make predictions
 y_pred = best_model.predict(X_test)
 
-# Evalúa el modelo
+# Evaluate the model
 accuracy = accuracy_score(y_test, y_pred)
 report = classification_report(y_test, y_pred, target_names=['R', 'S', 'I'], output_dict=True)
 
-# Almacena los resultados
+# Store results
 results = {
     'Accuracy': accuracy,
     'Best_Params': str(grid_search.best_params_),
@@ -113,8 +100,8 @@ results = {
     'F1_I': report['I']['f1-score']
 }
 
-# Guarda los resultados en un archivo CSV
+# Save results to CSV
 results_df = pd.DataFrame([results])
 results_df.to_csv(grid_search_results_file, index=False)
 
-print(f"Grid Search results saved to {grid_search_results_file}")
+print(f"Grid Search results with SMOTE saved to {grid_search_results_file}")

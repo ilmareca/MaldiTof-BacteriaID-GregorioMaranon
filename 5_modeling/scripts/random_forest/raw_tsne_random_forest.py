@@ -58,7 +58,7 @@ param_grid = {
 }
 
 # t-SNE components to test
-tsne_components = [2, 3, 5]
+tsne_components = [2]
 
 # Store results
 all_results = []
