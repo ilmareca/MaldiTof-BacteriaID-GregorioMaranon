@@ -13,15 +13,12 @@ score_output_file = os.path.join('/export/usuarios01/ilmareca/github/MaldiTof-Ba
 os.makedirs('/export/usuarios01/ilmareca/github/MaldiTof-BacteriaID-GregorioMaranon/4_feature_extraction/scripts/umap/outputs', exist_ok=True)
 X_path = os.path.join(preprocessed_dir, 'X_klebsiella.pkl')
 y_path = os.path.join(preprocessed_dir, 'y_klebsiella.pkl')
-csv_path = os.path.join('/export/usuarios01/ilmareca/github/MaldiTof-BacteriaID-GregorioMaranon/1_data_cleaning/scripts/HGUGM/1_4_clean_amr_csv/outputs', 'result_amr_20250203_175832_AmpSulbactam.csv')
+csv_path = os.path.join('/export/usuarios01/ilmareca/github/MaldiTof-BacteriaID-GregorioMaranon/1_data_cleaning/scripts/HGUGM/1_4_clean_amr_csv/outputs', 'result_amr_20250212_175852_Imipenem.csv')
 
 # Load the preprocessed data
 X = joblib.load(X_path)
 y = joblib.load(y_path)
 
-# Normalización usando MinMaxScaler para preservar la forma de los espectros
-scaler = MinMaxScaler()
-X_scaled = scaler.fit_transform(X)
 
 # Load the CSV file with antibiotic resistance information
 df_amr = pd.read_csv(csv_path)
@@ -31,7 +28,7 @@ df_amr['extern_id'] = df_amr['extern_id'].astype(str).str.zfill(8)
 y_sample = [str(extern_id).zfill(8) for extern_id in y]
 
 # Create a DataFrame for the spectra
-df_spectra = pd.DataFrame(X_scaled, columns=[f"mz_{i}" for i in range(X_scaled.shape[1])])
+df_spectra = pd.DataFrame(X, columns=[f"mz_{i}" for i in range(X.shape[1])])
 df_spectra['extern_id'] = y_sample
 
 # Merge the data on extern_id
@@ -41,7 +38,7 @@ df_merged = pd.merge(df_spectra, df_amr, on='extern_id')
 antibiotics = [col for col in df_amr.columns if 'Interpretación' in col]
 
 # Define colors for labels
-color_map = {'R': '#da0d91', 'S': '#07b457', 'I': '#f4a742'}
+color_map = {'R': '#da0d91', 'S': '#07b457'}
 
 # Define the grid of hyperparameters for UMAP and feature selection
 n_neighbors_list = [2, 5, 10, 15, 30, 45]  # Different neighborhood sizes
@@ -69,7 +66,7 @@ results = []
 for antibiotic in antibiotics:
     # Filter and prepare the data
     df_filtered = df_merged[['extern_id'] + [col for col in df_merged.columns if col.startswith('mz_')] + [antibiotic]].dropna()
-    df_filtered = df_filtered[df_filtered[antibiotic].isin(['R', 'S', 'I'])]
+    df_filtered = df_filtered[df_filtered[antibiotic].isin(['R', 'S'])]
 
     # Iterate over different threshold values for feature selection
     for threshold in threshold_list:
@@ -80,7 +77,7 @@ for antibiotic in antibiotics:
             continue
         
         X_filtered = df_filtered[selected_features].values
-        labels = df_filtered[antibiotic].map({'R': 0, 'S': 1, 'I': 2}).values  # Map to numerical labels for silhouette score
+        labels = df_filtered[antibiotic].map({'R': 0, 'S': 1}).values  # Map to numerical labels for silhouette score
 
         # Iterate over different hyperparameter combinations
         for n_neighbors in n_neighbors_list:
@@ -89,12 +86,6 @@ for antibiotic in antibiotics:
                     # Perform UMAP with the current hyperparameter combination
                     reducer = umap.UMAP(n_neighbors=n_neighbors, min_dist=min_dist, metric=metric, random_state=42)
                     X_umap = reducer.fit_transform(X_filtered)
-
-                    # Compute silhouette score
-                    if len(set(labels)) > 1:  # Silhouette score needs at least 2 classes
-                        silhouette = silhouette_score(X_umap, labels)
-                    else:
-                        silhouette = float('nan')  # Assign NaN if only one class exists
 
                     # Create a DataFrame for visualization
                     df_umap = pd.DataFrame(X_umap, columns=['UMAP1', 'UMAP2'])
@@ -106,7 +97,7 @@ for antibiotic in antibiotics:
                     plt.scatter(df_umap['UMAP1'], df_umap['UMAP2'], c=df_umap['color'], alpha=0.7, s=15, edgecolor='k', linewidth=0.3)
 
                     # Titles and labels
-                    plt.title(f'UMAP ({antibiotic})\nScore: {silhouette:.3f}, n_neighbors={n_neighbors}, min_dist={min_dist}, metric={metric}, threshold={threshold}')
+                    plt.title(f'UMAP ({antibiotic})\n n_neighbors={n_neighbors}, min_dist={min_dist}, metric={metric}, threshold={threshold}')
                     plt.xlabel('UMAP1')
                     plt.ylabel('UMAP2')
 
@@ -125,9 +116,5 @@ for antibiotic in antibiotics:
                     print(f"Saved: {file_name}")
 
                     # Store the results
-                    results.append([antibiotic, n_neighbors, min_dist, metric, threshold, silhouette, file_name])
+                    results.append([antibiotic, n_neighbors, min_dist, metric, threshold, file_name])
 
-# Save the results to a CSV file
-results_df = pd.DataFrame(results, columns=['Antibiotic', 'n_neighbors', 'min_dist', 'metric', 'threshold', 'silhouette_score', 'file_name'])
-results_df.to_csv(score_output_file, index=False)
-print(f"Scores saved to {score_output_file}")
