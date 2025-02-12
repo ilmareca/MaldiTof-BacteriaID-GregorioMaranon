@@ -2,7 +2,7 @@ import pandas as pd
 import os
 
 # Define the path to the input CSV file
-input_csv_path = '/export/usuarios01/ilmareca/github/MaldiTof-BacteriaID-GregorioMaranon/1_data_cleaning/scripts/HGUGM/1_4_clean_amr_csv/outputs/result_amr_20250203_175832.csv'
+input_csv_path = '/export/usuarios01/ilmareca/github/MaldiTof-BacteriaID-GregorioMaranon/1_data_cleaning/scripts/HGUGM/1_4_clean_amr_csv/outputs/result_amr_20250212_175852.csv'
 
 # Load the CSV file into a DataFrame
 df = pd.read_csv(input_csv_path)

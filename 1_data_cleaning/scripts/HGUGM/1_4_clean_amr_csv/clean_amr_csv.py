@@ -58,7 +58,7 @@ result_df = pd.DataFrame(columns=columns)
 interpretation_mapping = {
     'S': 'S',
     'R': 'R',
-    'I': 'I',  # Adjust this if needed
+    'I': 'R',  # Map intermediate to resistant as DRIAMS does
     'R*': 'R',
     'ESBL': '',
     'EBL?': ''
