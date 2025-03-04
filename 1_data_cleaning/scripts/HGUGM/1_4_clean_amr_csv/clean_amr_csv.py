@@ -59,7 +59,7 @@ interpretation_mapping = {
     'S': 'S',
     'R': 'R',
     'I': 'R',  # Map intermediate to resistant as DRIAMS does
-    'R*': 'R',
+    'R*': '',
     'ESBL': '',
     'EBL?': ''
 }
