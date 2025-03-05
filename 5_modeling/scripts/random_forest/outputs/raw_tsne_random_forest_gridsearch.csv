@@ -1,2 +1,0 @@
-TSNE_Components,Accuracy,Best_Params,Precision_R,Recall_R,F1_R,Precision_S,Recall_S,F1_S,Precision_I,Recall_I,F1_I
-2,0.5063948840927258,"{'class_weight': 'balanced_subsample', 'max_depth': 30, 'max_features': 'sqrt', 'min_samples_leaf': 1, 'min_samples_split': 5, 'n_estimators': 500}",0.43161978661493694,0.4254302103250478,0.4285026480500722,0.5627141877998629,0.5936370209689081,0.577762139338494,0.08333333333333333,0.0136986301369863,0.023529411764705882

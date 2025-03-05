@@ -2,7 +2,7 @@ import os
 import joblib
 import pandas as pd
 import numpy as np
-from sklearn.neighbors import KNeighborsClassifier
+from sklearn.ensemble import ExtraTreesClassifier
 from sklearn.metrics import classification_report, accuracy_score
 from sklearn.model_selection import train_test_split, GridSearchCV
 from imblearn.over_sampling import SMOTE, RandomOverSampler
@@ -11,8 +11,8 @@ from imblearn.combine import SMOTEENN
 
 # Definir rutas
 preprocessed_dir = '/export/usuarios01/ilmareca/github/MaldiTof-BacteriaID-GregorioMaranon/3_data_preprocessing/scripts/outputs'
-results_file = os.path.join('/export/usuarios01/ilmareca/github/MaldiTof-BacteriaID-GregorioMaranon/5_modeling/scripts/knn/outputs', 'knn_results.csv')
-logs_file = os.path.join('/export/usuarios01/ilmareca/github/MaldiTof-BacteriaID-GregorioMaranon/5_modeling/scripts/knn/outputs', 'knn_logs.txt')
+results_file = os.path.join('/export/usuarios01/ilmareca/github/MaldiTof-BacteriaID-GregorioMaranon/5_modeling/scripts/extratrees/outputs', 'extratrees_results.csv')
+logs_file = os.path.join('/export/usuarios01/ilmareca/github/MaldiTof-BacteriaID-GregorioMaranon/5_modeling/scripts/extratrees/outputs', 'extratrees_logs.txt')
 os.makedirs(os.path.dirname(results_file), exist_ok=True)
 
 # Cargar datos preprocesados
@@ -45,10 +45,15 @@ X_filtered = df_filtered.drop(columns=['extern_id', antibiotic]).values
 # Split inicial sin balanceo
 X_train, X_test, y_train, y_test = train_test_split(X_filtered, labels, test_size=0.35, random_state=42)
 
-# GridSearch para KNN
-param_grid = {'n_neighbors': [3, 5, 7, 9, 11], 'weights': ['uniform', 'distance'], 'metric': ['euclidean', 'manhattan']}
-knn = KNeighborsClassifier()
-grid_search = GridSearchCV(knn, param_grid, cv=3, scoring='f1_macro', n_jobs=-1, verbose=2)
+# GridSearch para Extra Trees
+param_grid = {
+    'n_estimators': [50, 100, 200],
+    'max_depth': [None, 10, 20],
+    'min_samples_split': [2, 5, 10],
+    'min_samples_leaf': [1, 2, 4]
+}
+extra_trees = ExtraTreesClassifier()
+grid_search = GridSearchCV(extra_trees, param_grid, cv=3, scoring='f1_macro', n_jobs=-1, verbose=2)
 grid_search.fit(X_train, y_train)
 
 best_params = grid_search.best_params_
@@ -69,7 +74,7 @@ def evaluate_model(X, y, method_name, resampler=None):
             X_train, y_train = resampler.fit_resample(X_train, y_train)
 
         # Entrenar modelo con los mejores parámetros
-        model = KNeighborsClassifier(**best_params)
+        model = ExtraTreesClassifier(**best_params)
         model.fit(X_train, y_train)
         y_pred = model.predict(X_test)
 

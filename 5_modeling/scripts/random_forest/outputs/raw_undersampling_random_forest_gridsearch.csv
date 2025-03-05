@@ -1,2 +1,0 @@
-Accuracy,Best_Params,Precision_R,Recall_R,F1_R,Precision_S,Recall_S,F1_S,Precision_I,Recall_I,F1_I
-0.4012789768185452,"{'class_weight': 'balanced_subsample', 'max_depth': 15, 'max_features': 'sqrt', 'min_samples_leaf': 2, 'min_samples_split': 5, 'n_estimators': 1000}",0.5023419203747073,0.4101338432122371,0.4515789473684211,0.5995550611790879,0.3897324656543745,0.4723926380368098,0.04806408544726302,0.4931506849315068,0.08759124087591241

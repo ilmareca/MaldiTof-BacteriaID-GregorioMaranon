@@ -1,2 +1,0 @@
-Accuracy,Best_Params,Precision_R,Recall_R,F1_R,Precision_S,Recall_S,F1_S,Precision_I,Recall_I,F1_I
-0.6390887290167866,"{'estimator__max_depth': 1, 'learning_rate': 0.01, 'n_estimators': 50}",0.7019607843137254,0.3422562141491396,0.4601542416452442,0.6229919678714859,0.8973246565437455,0.7354074074074074,0.0,0.0,0.0

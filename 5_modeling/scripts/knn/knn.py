@@ -1,92 +1,68 @@
 import os
 import joblib
 import pandas as pd
-from sklearn.preprocessing import MinMaxScaler
+from sklearn.neighbors import KNeighborsClassifier
 from sklearn.metrics import classification_report, accuracy_score
-from sklearn.model_selection import train_test_split, GridSearchCV
-from sklearn.ensemble import RandomForestClassifier
+from sklearn.model_selection import train_test_split
 
-# Define paths
+# Definir rutas
 preprocessed_dir = '/export/usuarios01/ilmareca/github/MaldiTof-BacteriaID-GregorioMaranon/3_data_preprocessing/scripts/outputs'
-grid_search_results_file = os.path.join('/export/usuarios01/ilmareca/github/MaldiTof-BacteriaID-GregorioMaranon/5_modeling/scripts/random_forest/outputs', 'raw_random_forest_gridsearch.csv')
-os.makedirs(os.path.dirname(grid_search_results_file), exist_ok=True)
+results_file = os.path.join('/export/usuarios01/ilmareca/github/MaldiTof-BacteriaID-GregorioMaranon/5_modeling/scripts/knn/outputs', 'knn_results.csv')
+os.makedirs(os.path.dirname(results_file), exist_ok=True)
+
 X_path = os.path.join(preprocessed_dir, 'X_klebsiella.pkl')
 y_path = os.path.join(preprocessed_dir, 'y_klebsiella.pkl')
 csv_path = os.path.join('/export/usuarios01/ilmareca/github/MaldiTof-BacteriaID-GregorioMaranon/1_data_cleaning/scripts/HGUGM/1_4_clean_amr_csv/outputs', 'result_amr_20250304_183343_ciprofloxacina.csv')
 
-# Load the preprocessed data
+# Cargar datos preprocesados
 X = joblib.load(X_path)
 y = joblib.load(y_path)
 
-# Normalize using MinMaxScaler
-
-
-# Load the CSV file with antibiotic resistance information
+# Cargar archivo CSV con información de resistencia antibiótica
 df_amr = pd.read_csv(csv_path)
 
-# Ensure extern_id has 8 digits
+# Asegurar que 'extern_id' tenga 8 dígitos
 df_amr['extern_id'] = df_amr['extern_id'].astype(str).str.zfill(8)
 y_sample = [str(extern_id).zfill(8) for extern_id in y]
 
-# Create a DataFrame for the spectra
+# Crear DataFrame de espectros
 df_spectra = pd.DataFrame(X, columns=[f"mz_{i}" for i in range(X.shape[1])])
 df_spectra['extern_id'] = y_sample
 
-# Merge the data on extern_id
+# Unir datos en 'extern_id'
 df_merged = pd.merge(df_spectra, df_amr, on='extern_id')
 
-# Antibiotic column
+# Selección de antibiótico
 antibiotic = 'Ciprofloxacina'
 
-# Filter and prepare data
+# Filtrar y preparar datos
 df_filtered = df_merged[['extern_id'] + [col for col in df_merged.columns if col.startswith('mz_')] + [antibiotic]].dropna()
 df_filtered = df_filtered[df_filtered[antibiotic].isin(['R', 'S'])]
 
-# Map labels to numerical values
+# Mapear etiquetas a valores numéricos
 labels = df_filtered[antibiotic].map({'R': 0, 'S': 1}).values
 X_filtered = df_filtered.drop(columns=['extern_id', antibiotic]).values
 
-# Split the data into training and test sets
+# Dividir datos en entrenamiento y prueba
 X_train, X_test, y_train, y_test = train_test_split(X_filtered, labels, test_size=0.35, random_state=42)
 
-# Define Random Forest and GridSearch parameters
-param_grid = {
-    'n_estimators': [200, 500, 1000],
-    'max_depth': [15, 20, 30],
-    'min_samples_split': [2, 5, 10],
-    'min_samples_leaf': [1, 2],
-    'max_features': ['sqrt', 'log2'],
-    'class_weight': ['balanced', 'balanced_subsample']
-}
+# Definir y entrenar modelo KNN con los mejores parámetros
+knn_model = KNeighborsClassifier(metric='manhattan', n_neighbors=3, weights='distance')
+knn_model.fit(X_train, y_train)
 
-# Initialize Random Forest
-rf_model = RandomForestClassifier(random_state=42)
+# Realizar predicciones
+y_pred = knn_model.predict(X_test)
 
-# Apply GridSearchCV optimizing f1_macro
-grid_search = GridSearchCV(
-    estimator=rf_model, 
-    param_grid=param_grid, 
-    cv=3, 
-    scoring='f1_macro', 
-    n_jobs=-1, 
-    verbose=2
-)
-grid_search.fit(X_train, y_train)
-
-# Get the best model
-best_model = grid_search.best_estimator_
-
-# Make predictions
-y_pred = best_model.predict(X_test)
-
-# Evaluate the model
+# Evaluar el modelo
 accuracy = accuracy_score(y_test, y_pred)
 report = classification_report(y_test, y_pred, target_names=['R', 'S'], output_dict=True)
 
-# Store results
+# Guardar resultados
 results = {
     'Accuracy': accuracy,
-    'Best_Params': str(grid_search.best_params_),
+    'Metric': 'manhattan',
+    'n_neighbors': 3,
+    'Weights': 'distance',
     'Precision_R': report['R']['precision'],
     'Recall_R': report['R']['recall'],
     'F1_R': report['R']['f1-score'],
@@ -95,8 +71,8 @@ results = {
     'F1_S': report['S']['f1-score']
 }
 
-# Save results to CSV
+# Guardar resultados en CSV
 results_df = pd.DataFrame([results])
-results_df.to_csv(grid_search_results_file, index=False)
+results_df.to_csv(results_file, index=False)
 
-print(f"Grid Search results saved to {grid_search_results_file}")
+print(f"Resultados de KNN guardados en {results_file}")

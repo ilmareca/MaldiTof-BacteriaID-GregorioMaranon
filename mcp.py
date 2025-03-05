@@ -1,87 +1,86 @@
 import os
 import joblib
+import numpy as np
 import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import classification_report, accuracy_score
-from sklearn.model_selection import train_test_split, GridSearchCV
+from sklearn.model_selection import train_test_split
 
-# Define paths
+# Definir rutas de archivos
 preprocessed_dir = '/export/usuarios01/ilmareca/github/MaldiTof-BacteriaID-GregorioMaranon/3_data_preprocessing/scripts/outputs'
-grid_search_results_file = os.path.join('/export/usuarios01/ilmareca/github/MaldiTof-BacteriaID-GregorioMaranon/5_modeling/scripts/logistic_regression/outputs', 'raw_logistic_regression_gridsearch.csv')
-os.makedirs(os.path.dirname(grid_search_results_file), exist_ok=True)
 X_path = os.path.join(preprocessed_dir, 'X_klebsiella.pkl')
 y_path = os.path.join(preprocessed_dir, 'y_klebsiella.pkl')
 csv_path = os.path.join('/export/usuarios01/ilmareca/github/MaldiTof-BacteriaID-GregorioMaranon/1_data_cleaning/scripts/HGUGM/1_4_clean_amr_csv/outputs', 'result_amr_20250304_183343_ciprofloxacina.csv')
 
-# Load the preprocessed data
+# Cargar los datos preprocesados
 X = joblib.load(X_path)
 y = joblib.load(y_path)
 
-# Load the CSV file with antibiotic resistance information
+# Cargar el archivo CSV con información de resistencia antibiótica
 df_amr = pd.read_csv(csv_path)
 
-# Ensure extern_id has 8 digits
+# Asegurar que extern_id tenga 8 dígitos
 df_amr['extern_id'] = df_amr['extern_id'].astype(str).str.zfill(8)
 y_sample = [str(extern_id).zfill(8) for extern_id in y]
 
-# Create a DataFrame for the spectra
+# Crear un DataFrame para los espectros
 df_spectra = pd.DataFrame(X, columns=[f"mz_{i}" for i in range(X.shape[1])])
 df_spectra['extern_id'] = y_sample
 
-# Merge the data on extern_id
+# Unir los datos en extern_id
 df_merged = pd.merge(df_spectra, df_amr, on='extern_id')
 
-# Antibiotic column
+# Filtrar columnas relevantes
 antibiotic = 'Ciprofloxacina'
-
-# Filter and prepare data
 df_filtered = df_merged[['extern_id'] + [col for col in df_merged.columns if col.startswith('mz_')] + [antibiotic]].dropna()
 df_filtered = df_filtered[df_filtered[antibiotic].isin(['R', 'S'])]
 
-# Map labels to numerical values
+# Mapear etiquetas a valores numéricos
 labels = df_filtered[antibiotic].map({'R': 0, 'S': 1}).values
 X_filtered = df_filtered.drop(columns=['extern_id', antibiotic]).values
 
-# Split the data into training and test sets
+# Dividir datos en entrenamiento y prueba
 X_train, X_test, y_train, y_test = train_test_split(X_filtered, labels, test_size=0.35, random_state=42)
 
-# Define Logistic Regression and GridSearch parameters
+# Entrenar modelo de Regresión Logística con los hiperparámetros especificados
+best_model = LogisticRegression(C=1000, max_iter=100, penalty='l1', solver='liblinear', random_state=42)
+best_model.fit(X_train, y_train)
 
-param_grid = {
-    'C': [0.0001, 0.001, 0.01, 0.1, 1, 10, 100, 1000, 10000],
-    'penalty': ['l1', 'l2', 'elasticnet', None],
-    'solver': ['liblinear', 'saga'],
-    'max_iter': [100, 200, 500]
-}
-
-# Initialize Logistic Regression model
-log_reg_model = LogisticRegression(random_state=42)
-
-# Apply GridSearchCV optimizing f1_macro
-grid_search = GridSearchCV(
-    estimator=log_reg_model, 
-    param_grid=param_grid, 
-    cv=3, 
-    scoring='f1_macro', 
-    n_jobs=-1, 
-    verbose=2
-)
-grid_search.fit(X_train, y_train)
-
-# Get the best model
-best_model = grid_search.best_estimator_
-
-# Make predictions
+# Hacer predicciones y evaluar
 y_pred = best_model.predict(X_test)
-
-# Evaluate the model
 accuracy = accuracy_score(y_test, y_pred)
 report = classification_report(y_test, y_pred, target_names=['R', 'S'], output_dict=True)
 
-# Store results
+print(f"Precisión del modelo: {accuracy:.4f}")
+
+# Obtener probabilidades de predicción
+y_proba = best_model.predict_proba(X_test)
+
+# Calcular la confianza como la probabilidad máxima de la clase predicha
+confidence_scores = y_proba.max(axis=1)
+
+# Crear la gráfica de distribución de probabilidades máximas de clase (MCP) y guardarla
+plt.figure(figsize=(10, 6))
+sns.histplot(confidence_scores, bins=30, kde=True, color='blue', alpha=0.6)
+plt.axvline(x=0.75, color='red', linestyle='--', label="Umbral de rechazo (0.75)")
+plt.title("Distribución de la probabilidad máxima de clase (MCP)")
+plt.xlabel("Máxima probabilidad de clase (MCP)")
+plt.ylabel("Frecuencia")
+plt.legend()
+
+# Guardar la imagen en lugar de mostrarla
+image_path = "mcp_distribution.png"
+plt.savefig(image_path, dpi=300, bbox_inches='tight')
+plt.close()
+
+print(f"Gráfica guardada en {image_path}")
+
+# Guardar resultados en CSV
 results = {
     'Accuracy': accuracy,
-    'Best_Params': str(grid_search.best_params_),
+    'Best_Params': str({'C': 1000, 'max_iter': 100, 'penalty': 'l1', 'solver': 'liblinear'}),
     'Precision_R': report['R']['precision'],
     'Recall_R': report['R']['recall'],
     'F1_R': report['R']['f1-score'],
@@ -90,8 +89,7 @@ results = {
     'F1_S': report['S']['f1-score']
 }
 
-# Save results to CSV
 results_df = pd.DataFrame([results])
-results_df.to_csv(grid_search_results_file, index=False)
+results_df.to_csv('logistic_regression_results.csv', index=False)
 
-print(f"Grid Search results saved to {grid_search_results_file}")
+print("Resultados guardados en 'logistic_regression_results.csv'")

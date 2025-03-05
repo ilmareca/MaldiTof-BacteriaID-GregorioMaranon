@@ -1,14 +1,14 @@
 import os
 import joblib
 import pandas as pd
-from sklearn.preprocessing import MinMaxScaler
+import xgboost as xgb
+from imblearn.over_sampling import RandomOverSampler
 from sklearn.metrics import classification_report, accuracy_score
-from sklearn.model_selection import train_test_split, GridSearchCV
-from sklearn.ensemble import RandomForestClassifier
+from sklearn.model_selection import train_test_split
 
 # Define paths
 preprocessed_dir = '/export/usuarios01/ilmareca/github/MaldiTof-BacteriaID-GregorioMaranon/3_data_preprocessing/scripts/outputs'
-grid_search_results_file = os.path.join('/export/usuarios01/ilmareca/github/MaldiTof-BacteriaID-GregorioMaranon/5_modeling/scripts/random_forest/outputs', 'raw_random_forest_gridsearch.csv')
+grid_search_results_file = os.path.join('/export/usuarios01/ilmareca/github/MaldiTof-BacteriaID-GregorioMaranon/5_modeling/scripts/xgboost/outputs', 'oversampling_xgboost_results.csv')
 os.makedirs(os.path.dirname(grid_search_results_file), exist_ok=True)
 X_path = os.path.join(preprocessed_dir, 'X_klebsiella.pkl')
 y_path = os.path.join(preprocessed_dir, 'y_klebsiella.pkl')
@@ -17,9 +17,6 @@ csv_path = os.path.join('/export/usuarios01/ilmareca/github/MaldiTof-BacteriaID-
 # Load the preprocessed data
 X = joblib.load(X_path)
 y = joblib.load(y_path)
-
-# Normalize using MinMaxScaler
-
 
 # Load the CSV file with antibiotic resistance information
 df_amr = pd.read_csv(csv_path)
@@ -47,46 +44,40 @@ labels = df_filtered[antibiotic].map({'R': 0, 'S': 1}).values
 X_filtered = df_filtered.drop(columns=['extern_id', antibiotic]).values
 
 # Split the data into training and test sets
-X_train, X_test, y_train, y_test = train_test_split(X_filtered, labels, test_size=0.35, random_state=42)
+X_train, X_test, y_train, y_test = train_test_split(X_filtered, labels, test_size=0.35, random_state=42, stratify=labels)
 
-# Define Random Forest and GridSearch parameters
-param_grid = {
-    'n_estimators': [200, 500, 1000],
-    'max_depth': [15, 20, 30],
-    'min_samples_split': [2, 5, 10],
-    'min_samples_leaf': [1, 2],
-    'max_features': ['sqrt', 'log2'],
-    'class_weight': ['balanced', 'balanced_subsample']
-}
+# Apply RandomOverSampler to the training set
+over_sampler = RandomOverSampler(random_state=42)
+X_train_resampled, y_train_resampled = over_sampler.fit_resample(X_train, y_train)
 
-# Initialize Random Forest
-rf_model = RandomForestClassifier(random_state=42)
+# Verify distribution after oversampling
+print("Distribución después de Oversampling:")
+print(pd.Series(y_train_resampled).value_counts())
 
-# Apply GridSearchCV optimizing f1_macro
-grid_search = GridSearchCV(
-    estimator=rf_model, 
-    param_grid=param_grid, 
-    cv=3, 
-    scoring='f1_macro', 
-    n_jobs=-1, 
-    verbose=2
+# Define XGBoost model with specific hyperparameters
+xgb_model = xgb.XGBClassifier(
+    n_estimators=100,
+    max_depth=6,
+    learning_rate=0.1,
+    objective='binary:logistic',
+    use_label_encoder=False,
+    eval_metric='logloss',
+    random_state=42
 )
-grid_search.fit(X_train, y_train)
 
-# Get the best model
-best_model = grid_search.best_estimator_
+# Train the model
+xgb_model.fit(X_train_resampled, y_train_resampled)
 
 # Make predictions
-y_pred = best_model.predict(X_test)
+y_pred = xgb_model.predict(X_test)
 
 # Evaluate the model
 accuracy = accuracy_score(y_test, y_pred)
 report = classification_report(y_test, y_pred, target_names=['R', 'S'], output_dict=True)
 
-# Store results
+# Save results
 results = {
     'Accuracy': accuracy,
-    'Best_Params': str(grid_search.best_params_),
     'Precision_R': report['R']['precision'],
     'Recall_R': report['R']['recall'],
     'F1_R': report['R']['f1-score'],
@@ -99,4 +90,4 @@ results = {
 results_df = pd.DataFrame([results])
 results_df.to_csv(grid_search_results_file, index=False)
 
-print(f"Grid Search results saved to {grid_search_results_file}")
+print(f"Resultados guardados en {grid_search_results_file}")

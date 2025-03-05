@@ -1,0 +1,19 @@
+Mejores parámetros: {'C': 1000, 'penalty': 'l1', 'solver': 'liblinear'}
+
+Resultados con Sin Balanceo:
+      Method  Seed  Accuracy  Precision_R  Recall_R     F1_R  Precision_S  Recall_S     F1_S
+Sin Balanceo     0  0.802489     0.653664  0.558586 0.602397     0.846667  0.891722 0.868611
+Sin Balanceo     1  0.800325     0.620438  0.544872 0.580205     0.851775  0.886957 0.869010
+Sin Balanceo     2  0.786797     0.605386  0.534091 0.567508     0.841309  0.876466 0.858528
+Sin Balanceo     3  0.799513     0.632850  0.545265 0.585802     0.847629  0.888848 0.867749
+Sin Balanceo     4  0.791396     0.620770  0.543967 0.579837     0.842902  0.880427 0.861256
+Sin Balanceo     5  0.799513     0.607223  0.577873 0.592185     0.860142  0.874141 0.867085
+Sin Balanceo     6  0.796266     0.626168  0.553148 0.587397     0.847535  0.882655 0.864739
+Sin Balanceo     7  0.801407     0.632985  0.565940 0.597588     0.852557  0.884376 0.868175
+Sin Balanceo     8  0.797890     0.630137  0.566154 0.596434     0.850000  0.880926 0.865187
+Sin Balanceo     9  0.784632     0.595344  0.554752 0.574332     0.845741  0.866202 0.855849
+
+Resumen de métricas (Media y Desviación Estándar):
+Metric  Accuracy  Precision_R  Recall_R     F1_R  Precision_S  Recall_S     F1_S
+  mean  0.796023     0.622497  0.554465 0.586368     0.848626  0.881272 0.864619
+   std  0.006267     0.016770  0.013068 0.011058     0.005380  0.007545 0.004587
