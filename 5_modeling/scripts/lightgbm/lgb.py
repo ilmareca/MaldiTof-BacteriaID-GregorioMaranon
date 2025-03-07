@@ -1,133 +1,87 @@
 import os
 import joblib
 import pandas as pd
-import numpy as np
 import lightgbm as lgb
 from sklearn.metrics import classification_report, accuracy_score
-from sklearn.model_selection import train_test_split, GridSearchCV
-from imblearn.over_sampling import SMOTE, RandomOverSampler
-from imblearn.under_sampling import RandomUnderSampler
-from imblearn.combine import SMOTEENN
+from sklearn.model_selection import train_test_split
 
-# Definir rutas
+# Define paths
 preprocessed_dir = '/export/usuarios01/ilmareca/github/MaldiTof-BacteriaID-GregorioMaranon/3_data_preprocessing/scripts/outputs'
 results_file = os.path.join('/export/usuarios01/ilmareca/github/MaldiTof-BacteriaID-GregorioMaranon/5_modeling/scripts/lightgbm/outputs', 'lightgbm_results.csv')
-logs_file = os.path.join('/export/usuarios01/ilmareca/github/MaldiTof-BacteriaID-GregorioMaranon/5_modeling/scripts/lightgbm/outputs', 'lightgbm_logs.txt')
+log_file_path = os.path.join('/export/usuarios01/ilmareca/github/MaldiTof-BacteriaID-GregorioMaranon/5_modeling/scripts/lightgbm/outputs', 'lightgbm_training.log')
 os.makedirs(os.path.dirname(results_file), exist_ok=True)
-
-# Cargar datos preprocesados
 X_path = os.path.join(preprocessed_dir, 'X_klebsiella.pkl')
 y_path = os.path.join(preprocessed_dir, 'y_klebsiella.pkl')
 csv_path = os.path.join('/export/usuarios01/ilmareca/github/MaldiTof-BacteriaID-GregorioMaranon/1_data_cleaning/scripts/HGUGM/1_4_clean_amr_csv/outputs', 'result_amr_20250304_183343_ciprofloxacina.csv')
 
+# Function to write logs
+def write_log(message):
+    with open(log_file_path, 'a') as log_file:
+        log_file.write(message + '\n')
+        print(message)
+
+# Load the preprocessed data
 X = joblib.load(X_path)
 y = joblib.load(y_path)
 
-# Cargar datos de resistencia
+# Load the CSV file with antibiotic resistance information
 df_amr = pd.read_csv(csv_path)
+
+# Ensure extern_id has 8 digits
 df_amr['extern_id'] = df_amr['extern_id'].astype(str).str.zfill(8)
 y_sample = [str(extern_id).zfill(8) for extern_id in y]
 
-# Crear DataFrame y unir datos
+# Create a DataFrame for the spectra
 df_spectra = pd.DataFrame(X, columns=[f"mz_{i}" for i in range(X.shape[1])])
 df_spectra['extern_id'] = y_sample
+
+# Merge the data on extern_id
 df_merged = pd.merge(df_spectra, df_amr, on='extern_id')
 
-# Filtrar por Ciprofloxacina
+# Antibiotic column
 antibiotic = 'Ciprofloxacina'
+
+# Filter and prepare data
 df_filtered = df_merged[['extern_id'] + [col for col in df_merged.columns if col.startswith('mz_')] + [antibiotic]].dropna()
 df_filtered = df_filtered[df_filtered[antibiotic].isin(['R', 'S'])]
 
-# Mapear etiquetas
+# Map labels to numerical values
 labels = df_filtered[antibiotic].map({'R': 0, 'S': 1}).values
 X_filtered = df_filtered.drop(columns=['extern_id', antibiotic]).values
 
-# Split inicial sin balanceo
+# Split the data into training and test sets
 X_train, X_test, y_train, y_test = train_test_split(X_filtered, labels, test_size=0.35, random_state=42)
+write_log("Data loaded and split into training and test sets.")
 
-# GridSearch para LightGBM
-param_grid = {
-    'num_leaves': [31, 50, 100],
-    'learning_rate': [0.01, 0.1, 0.2],
-    'n_estimators': [50, 100, 200],
-    'subsample': [0.8, 1.0]
+# Initialize LightGBM model
+lgb_model = lgb.LGBMClassifier(objective='binary', random_state=42, n_estimators=500, learning_rate=0.1, max_depth=-1, num_leaves=31)
+
+# Train the model
+write_log("Training LightGBM model...")
+lgb_model.fit(X_train, y_train)
+write_log("Model training completed.")
+
+# Make predictions
+y_pred = lgb_model.predict(X_test)
+write_log("Predictions completed.")
+
+# Evaluate the model
+accuracy = accuracy_score(y_test, y_pred)
+report = classification_report(y_test, y_pred, target_names=['R', 'S'], output_dict=True)
+
+# Store results
+results = {
+    'Accuracy': accuracy,
+    'Precision_R': report['R']['precision'],
+    'Recall_R': report['R']['recall'],
+    'F1_R': report['R']['f1-score'],
+    'Precision_S': report['S']['precision'],
+    'Recall_S': report['S']['recall'],
+    'F1_S': report['S']['f1-score']
 }
-lgbm = lgb.LGBMClassifier()
-grid_search = GridSearchCV(lgbm, param_grid, cv=3, scoring='f1_macro', n_jobs=-1, verbose=2)
-grid_search.fit(X_train, y_train)
 
-best_params = grid_search.best_params_
+# Save results to CSV
+results_df = pd.DataFrame([results])
+results_df.to_csv(results_file, index=False)
 
-# Guardar mejores parámetros
-with open(logs_file, 'a') as log:
-    log.write(f"Mejores parámetros: {best_params}\n")
-
-# Función para evaluar el modelo con distintas técnicas de balanceo
-def evaluate_model(X, y, method_name, resampler=None):
-    results_list = []
-
-    for seed in range(10):
-        X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.35, random_state=seed)
-
-        # Aplicar resampling si se proporciona un método
-        if resampler:
-            X_train, y_train = resampler.fit_resample(X_train, y_train)
-
-        # Entrenar modelo con los mejores parámetros
-        model = lgb.LGBMClassifier(**best_params)
-        model.fit(X_train, y_train)
-        y_pred = model.predict(X_test)
-
-        # Calcular métricas
-        acc = accuracy_score(y_test, y_pred)
-        report = classification_report(y_test, y_pred, output_dict=True)
-
-        precision_r = report['0']['precision']
-        recall_r = report['0']['recall']
-        f1_r = report['0']['f1-score']
-        precision_s = report['1']['precision']
-        recall_s = report['1']['recall']
-        f1_s = report['1']['f1-score']
-
-        results_list.append([method_name, seed, acc, precision_r, recall_r, f1_r, precision_s, recall_s, f1_s])
-
-    # Convertir a DataFrame
-    results_df = pd.DataFrame(results_list, columns=['Method', 'Seed', 'Accuracy', 'Precision_R', 'Recall_R', 'F1_R', 'Precision_S', 'Recall_S', 'F1_S'])
-
-    # Calcular media y desviación
-    metrics_summary = results_df.iloc[:, 2:].agg(['mean', 'std']).reset_index()
-    metrics_summary.rename(columns={'index': 'Metric'}, inplace=True)
-
-    # Guardar resultados en CSV
-    results_df.to_csv(results_file, mode='a', index=False, header=not os.path.exists(results_file))
-    metrics_summary.to_csv(results_file, mode='a', index=False, header=False)
-
-    # Guardar resultados en logs
-    with open(logs_file, 'a') as log:
-        log.write(f"\nResultados con {method_name}:\n")
-        log.write(results_df.to_string(index=False) + "\n")
-        log.write("\nResumen de métricas (Media y Desviación Estándar):\n")
-        log.write(metrics_summary.to_string(index=False) + "\n")
-
-    print(f"Resultados de {method_name} guardados en CSV y logs.")
-
-# **Paso 2: Evaluación sin balanceo**
-evaluate_model(X_filtered, labels, "Sin Balanceo")
-
-# **Paso 3: Evaluación con SMOTE**
-smote = SMOTE(random_state=42)
-evaluate_model(X_filtered, labels, "SMOTE", smote)
-
-# **Paso 4: Evaluación con SMOTEENN**
-smoteenn = SMOTEENN(random_state=42)
-evaluate_model(X_filtered, labels, "SMOTEENN", smoteenn)
-
-# **Paso 5: Evaluación con Random Oversampling**
-oversampler = RandomOverSampler(random_state=42)
-evaluate_model(X_filtered, labels, "Oversampling", oversampler)
-
-# **Paso 6: Evaluación con Random Undersampling**
-undersampler = RandomUnderSampler(random_state=42)
-evaluate_model(X_filtered, labels, "Undersampling", undersampler)
-
-print(f"Todos los resultados han sido guardados en {results_file} y {logs_file}.")
+write_log(f"Results saved to {results_file}")

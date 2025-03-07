@@ -1,0 +1,33 @@
+Data loaded and split into training and test sets.
+Training LightGBM model...
+Data loaded and split into training and test sets.
+Applied SMOTE to balance the training dataset.
+New class distribution: {1: 5081, 0: 5081}
+Training LightGBM model...
+Data loaded and split into training and test sets.
+Applied SMOTEENN to balance the training dataset.
+New class distribution: {0: 4403, 1: 1192}
+Training LightGBM model...
+Data loaded and split into training and test sets.
+Applied RandomOverSampler to balance the training dataset.
+New class distribution: {1: 5081, 0: 5081}
+Training LightGBM model...
+Model training completed.
+Predictions completed.
+Results saved to /export/usuarios01/ilmareca/github/MaldiTof-BacteriaID-GregorioMaranon/5_modeling/scripts/lightgbm/outputs/lightgbm_results.csv
+Model training completed.
+Predictions completed.
+Results saved to /export/usuarios01/ilmareca/github/MaldiTof-BacteriaID-GregorioMaranon/5_modeling/scripts/lightgbm/outputs/lightgbm_smote_results.csv
+Model training completed.
+Predictions completed.
+Results saved to /export/usuarios01/ilmareca/github/MaldiTof-BacteriaID-GregorioMaranon/5_modeling/scripts/lightgbm/outputs/lightgbm_smoteenn_results.csv
+Model training completed.
+Predictions completed.
+Results saved to /export/usuarios01/ilmareca/github/MaldiTof-BacteriaID-GregorioMaranon/5_modeling/scripts/lightgbm/outputs/lightgbm_oversampling_results.csv
+Data loaded and split into training and test sets.
+Applied RandomUnderSampler to balance the training dataset.
+New class distribution: {0: 1781, 1: 1781}
+Training LightGBM model...
+Model training completed.
+Predictions completed.
+Results saved to /export/usuarios01/ilmareca/github/MaldiTof-BacteriaID-GregorioMaranon/5_modeling/scripts/lightgbm/outputs/lightgbm_undersampling_results.csv

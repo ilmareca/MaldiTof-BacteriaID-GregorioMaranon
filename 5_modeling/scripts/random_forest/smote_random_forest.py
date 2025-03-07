@@ -55,7 +55,7 @@ print("Distribución después de SMOTE:")
 print(pd.Series(y_train_resampled).value_counts())
 
 # Define Random Forest model with specific hyperparameters
-rf_model = RandomForestClassifier(n_estimators=100, max_depth=None, random_state=42, n_jobs=-1)
+rf_model = RandomForestClassifier(n_estimators=200, max_depth=15, random_state=42, n_jobs=-1, min_samples_leaf=1, min_samples_split=10, max_features='sqrt', class_weight='balanced') 
 
 # Train the model
 rf_model.fit(X_train_resampled, y_train_resampled)

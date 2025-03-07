@@ -1,26 +1,23 @@
 import os
 import joblib
 import pandas as pd
-from sklearn.preprocessing import MinMaxScaler
+import tensorflow as tf
+from tensorflow import keras
+from tensorflow.keras import layers
+from sklearn.model_selection import train_test_split
 from sklearn.metrics import classification_report, accuracy_score
-from sklearn.model_selection import train_test_split, GridSearchCV
-from sklearn.neural_network import MLPClassifier
 
 # Define paths
 preprocessed_dir = '/export/usuarios01/ilmareca/github/MaldiTof-BacteriaID-GregorioMaranon/3_data_preprocessing/scripts/outputs'
-grid_search_results_file = os.path.join('/export/usuarios01/ilmareca/github/MaldiTof-BacteriaID-GregorioMaranon/5_modeling/scripts/mlp/outputs', 'grid_search_mlp_results.csv')
-os.makedirs(os.path.dirname(grid_search_results_file), exist_ok=True)
+results_file = os.path.join('/export/usuarios01/ilmareca/github/MaldiTof-BacteriaID-GregorioMaranon/5_modeling/scripts/deep_learning/outputs', 'malditof_nn_results.csv')
+os.makedirs(os.path.dirname(results_file), exist_ok=True)
 X_path = os.path.join(preprocessed_dir, 'X_klebsiella.pkl')
 y_path = os.path.join(preprocessed_dir, 'y_klebsiella.pkl')
-csv_path = os.path.join('/export/usuarios01/ilmareca/github/MaldiTof-BacteriaID-GregorioMaranon/1_data_cleaning/scripts/HGUGM/1_4_clean_amr_csv/outputs', 'result_amr_20250203_175832_AmpSulbactam.csv')
+csv_path = os.path.join('/export/usuarios01/ilmareca/github/MaldiTof-BacteriaID-GregorioMaranon/1_data_cleaning/scripts/HGUGM/1_4_clean_amr_csv/outputs', 'result_amr_20250304_183343_ciprofloxacina.csv')
 
 # Load the preprocessed data
 X = joblib.load(X_path)
 y = joblib.load(y_path)
-
-# Normalize using MinMaxScaler
-scaler = MinMaxScaler()
-X_scaled = scaler.fit_transform(X)
 
 # Load the CSV file with antibiotic resistance information
 df_amr = pd.read_csv(csv_path)
@@ -30,76 +27,60 @@ df_amr['extern_id'] = df_amr['extern_id'].astype(str).str.zfill(8)
 y_sample = [str(extern_id).zfill(8) for extern_id in y]
 
 # Create a DataFrame for the spectra
-df_spectra = pd.DataFrame(X_scaled, columns=[f"mz_{i}" for i in range(X_scaled.shape[1])])
+df_spectra = pd.DataFrame(X, columns=[f"mz_{i}" for i in range(X.shape[1])])
 df_spectra['extern_id'] = y_sample
 
 # Merge the data on extern_id
 df_merged = pd.merge(df_spectra, df_amr, on='extern_id')
 
 # Antibiotic column
-antibiotic = 'Amp_Sulbactam_Interpretación'
+antibiotic = 'Ciprofloxacina'
 
 # Filter and prepare data
 df_filtered = df_merged[['extern_id'] + [col for col in df_merged.columns if col.startswith('mz_')] + [antibiotic]].dropna()
-df_filtered = df_filtered[df_filtered[antibiotic].isin(['R', 'S', 'I'])]
+df_filtered = df_filtered[df_filtered[antibiotic].isin(['R', 'S'])]
 
 # Map labels to numerical values
-labels = df_filtered[antibiotic].map({'R': 0, 'S': 1, 'I': 2}).values
+labels = df_filtered[antibiotic].map({'R': 0, 'S': 1}).values
 X_filtered = df_filtered.drop(columns=['extern_id', antibiotic]).values
 
 # Split the data into training and test sets
-X_train, X_test, y_train, y_test = train_test_split(X_filtered, labels, test_size=0.35, random_state=42)
+X_train, X_test, y_train, y_test = train_test_split(X_filtered, labels, test_size=0.35, random_state=42, stratify=labels)
 
-# Define MLP and GridSearch parameters
-param_grid = {
-    'hidden_layer_sizes': [(50,), (100,), (100, 50)],
-    'activation': ['tanh', 'relu'],
-    'solver': ['sgd', 'adam'],
-    'alpha': [0.0001, 0.001, 0.01],
-    'learning_rate': ['constant', 'adaptive']
-}
+# Define Neural Network model
+model = keras.Sequential([
+    layers.Dense(128, activation='relu', input_shape=(X_train.shape[1],)),
+    layers.Dropout(0.3),
+    layers.Dense(64, activation='relu'),
+    layers.Dropout(0.3),
+    layers.Dense(32, activation='relu'),
+    layers.Dense(1, activation='sigmoid')
+])
 
-# Initialize MLP classifier
-mlp_model = MLPClassifier(max_iter=500, random_state=42)
+# Compile model
+model.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy'])
 
-# Apply GridSearchCV optimizing f1_macro
-grid_search = GridSearchCV(
-    estimator=mlp_model, 
-    param_grid=param_grid, 
-    cv=3, 
-    scoring='f1_macro', 
-    n_jobs=2, 
-    verbose=2
-)
-grid_search.fit(X_train, y_train)
+# Train model
+history = model.fit(X_train, y_train, epochs=50, batch_size=32, validation_split=0.2, verbose=2)
 
-# Get the best model
-best_model = grid_search.best_estimator_
-
-# Make predictions
-y_pred = best_model.predict(X_test)
-
-# Evaluate the model
+# Evaluate model
+y_pred = (model.predict(X_test) > 0.5).astype("int32").flatten()
 accuracy = accuracy_score(y_test, y_pred)
-report = classification_report(y_test, y_pred, target_names=['R', 'S', 'I'], output_dict=True)
+report = classification_report(y_test, y_pred, target_names=['R', 'S'], output_dict=True)
 
 # Store results
 results = {
     'Accuracy': accuracy,
-    'Best_Params': str(grid_search.best_params_),
     'Precision_R': report['R']['precision'],
     'Recall_R': report['R']['recall'],
     'F1_R': report['R']['f1-score'],
     'Precision_S': report['S']['precision'],
     'Recall_S': report['S']['recall'],
-    'F1_S': report['S']['f1-score'],
-    'Precision_I': report['I']['precision'],
-    'Recall_I': report['I']['recall'],
-    'F1_I': report['I']['f1-score']
+    'F1_S': report['S']['f1-score']
 }
 
 # Save results to CSV
 results_df = pd.DataFrame([results])
-results_df.to_csv(grid_search_results_file, index=False)
+results_df.to_csv(results_file, index=False)
 
-print(f"Grid Search results saved to {grid_search_results_file}")
+print(f"Deep Learning results saved to {results_file}")

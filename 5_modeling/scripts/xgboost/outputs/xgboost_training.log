@@ -1,0 +1,8 @@
+Data loaded and split into training and test sets.
+Starting GridSearchCV...
+Data loaded and split into training and test sets.
+Starting GridSearchCV with reduced complexity...
+GridSearchCV completed.
+Best parameters found: {'colsample_bytree': 0.8, 'learning_rate': 0.1, 'max_depth': 3, 'n_estimators': 500, 'subsample': 1.0}
+Predictions completed.
+Grid Search results saved to /export/usuarios01/ilmareca/github/MaldiTof-BacteriaID-GregorioMaranon/5_modeling/scripts/xgboost/outputs/raw_xgboost_gridsearch.csv

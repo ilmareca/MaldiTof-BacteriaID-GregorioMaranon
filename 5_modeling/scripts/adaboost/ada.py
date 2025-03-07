@@ -1,7 +1,6 @@
 import os
 import joblib
 import pandas as pd
-from imblearn.under_sampling import RandomUnderSampler
 from sklearn.ensemble import AdaBoostClassifier
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.metrics import classification_report, accuracy_score
@@ -9,7 +8,7 @@ from sklearn.model_selection import train_test_split
 
 # Define paths
 preprocessed_dir = '/export/usuarios01/ilmareca/github/MaldiTof-BacteriaID-GregorioMaranon/3_data_preprocessing/scripts/outputs'
-grid_search_results_file = os.path.join('/export/usuarios01/ilmareca/github/MaldiTof-BacteriaID-GregorioMaranon/5_modeling/scripts/adaboost/outputs', 'undersampling_adaboost_results.csv')
+grid_search_results_file = os.path.join('/export/usuarios01/ilmareca/github/MaldiTof-BacteriaID-GregorioMaranon/5_modeling/scripts/adaboost/outputs', 'adaboost_results.csv')
 os.makedirs(os.path.dirname(grid_search_results_file), exist_ok=True)
 X_path = os.path.join(preprocessed_dir, 'X_klebsiella.pkl')
 y_path = os.path.join(preprocessed_dir, 'y_klebsiella.pkl')
@@ -47,24 +46,16 @@ X_filtered = df_filtered.drop(columns=['extern_id', antibiotic]).values
 # Split the data into training and test sets
 X_train, X_test, y_train, y_test = train_test_split(X_filtered, labels, test_size=0.35, random_state=42, stratify=labels)
 
-# Apply RandomUnderSampler to the training set
-under_sampler = RandomUnderSampler(random_state=42)
-X_train_resampled, y_train_resampled = under_sampler.fit_resample(X_train, y_train)
-
-# Verify distribution after undersampling
-print("Distribución después de Undersampling:")
-print(pd.Series(y_train_resampled).value_counts())
-
 # Define AdaBoost model with a Decision Tree base estimator
 adaboost_model = AdaBoostClassifier(
-    base_estimator=DecisionTreeClassifier(max_depth=1),
+    estimator=DecisionTreeClassifier(max_depth=1),
     n_estimators=100,
     learning_rate=0.1,
     random_state=42
 )
 
 # Train the model
-adaboost_model.fit(X_train_resampled, y_train_resampled)
+adaboost_model.fit(X_train, y_train)
 
 # Make predictions
 y_pred = adaboost_model.predict(X_test)

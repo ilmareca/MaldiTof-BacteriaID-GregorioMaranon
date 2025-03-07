@@ -1,0 +1,2 @@
+Accuracy,Best_Params,Precision_R,Recall_R,F1_R,Precision_S,Recall_S,F1_S
+0.8206168831168831,"{'colsample_bytree': 0.8, 'learning_rate': 0.1, 'max_depth': 3, 'n_estimators': 500, 'subsample': 1.0}",0.7940594059405941,0.41770833333333335,0.5474402730375426,0.8248198057035412,0.9619883040935673,0.8881390248017547
