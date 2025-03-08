@@ -1,0 +1,54 @@
+
+Processing: Original
+{'Method': 'Original', 'Accuracy': 0.8008658008658008, 'Precision_R': 0.6346153846153846, 'Recall_R': 0.55, 'F1_R': 0.5892857142857143, 'Precision_S': 0.8491620111731844, 'Recall_S': 0.8888888888888888, 'F1_S': 0.8685714285714285}
+
+Processing: SMOTE
+{'Method': 'SMOTE', 'Accuracy': 0.7770562770562771, 'Precision_R': 0.5642722117202268, 'Recall_R': 0.621875, 'F1_R': 0.5916749256689792, 'Precision_S': 0.8623957543593631, 'Recall_S': 0.8315058479532164, 'F1_S': 0.8466691477484183}
+
+Processing: Undersampling
+{'Method': 'Undersampling', 'Accuracy': 0.7234848484848485, 'Precision_R': 0.4777936962750716, 'Recall_R': 0.6947916666666667, 'F1_R': 0.566213921901528, 'Precision_S': 0.8726086956521739, 'Recall_S': 0.7335526315789473, 'F1_S': 0.7970611596505163}
+
+Processing: SMOTEENN
+{'Method': 'SMOTEENN', 'Accuracy': 0.6247294372294372, 'Precision_R': 0.3924433249370277, 'Recall_R': 0.8114583333333333, 'F1_R': 0.5290322580645161, 'Precision_S': 0.8942139099941555, 'Recall_S': 0.5592105263157895, 'F1_S': 0.6881043400044974}
+
+Processing: Oversampling
+{'Method': 'Oversampling', 'Accuracy': 0.7646103896103896, 'Precision_R': 0.5412844036697247, 'Recall_R': 0.6145833333333334, 'F1_R': 0.5756097560975609, 'Precision_S': 0.8580199539524175, 'Recall_S': 0.8172514619883041, 'F1_S': 0.8371396480718832}
+
+Processing: ADASYN
+{'Method': 'ADASYN', 'Accuracy': 0.7765151515151515, 'Precision_R': 0.5622676579925651, 'Recall_R': 0.6302083333333334, 'F1_R': 0.5943025540275049, 'Precision_S': 0.8645038167938931, 'Recall_S': 0.8278508771929824, 'F1_S': 0.8457804331590739}
+
+Processing: SVMSmote
+{'Method': 'SVMSmote', 'Accuracy': 0.7838203463203464, 'Precision_R': 0.5774783445620789, 'Recall_R': 0.625, 'F1_R': 0.6003001500750376, 'Precision_S': 0.8645088445615355, 'Recall_S': 0.839546783625731, 'F1_S': 0.8518449842388282}
+
+Processing: BorderlineSmote
+{'Method': 'BorderlineSmote', 'Accuracy': 0.7792207792207793, 'Precision_R': 0.5681818181818182, 'Recall_R': 0.625, 'F1_R': 0.5952380952380952, 'Precision_S': 0.8636363636363636, 'Recall_S': 0.8333333333333334, 'F1_S': 0.8482142857142857}
+
+Processing: ClusterCentroids
+{'Method': 'ClusterCentroids', 'Accuracy': 0.6996753246753247, 'Precision_R': 0.45142487046632124, 'Recall_R': 0.7260416666666667, 'F1_R': 0.5567092651757188, 'Precision_S': 0.8777881040892194, 'Recall_S': 0.6904239766081871, 'F1_S': 0.7729132569558101}
+
+Processing: CondensedNearestNeighbours
+{'Method': 'CondensedNearestNeighbours', 'Accuracy': 0.7426948051948052, 'Precision_R': 0.5034588777863183, 'Recall_R': 0.6822916666666666, 'F1_R': 0.5793896505970809, 'Precision_S': 0.872651356993737, 'Recall_S': 0.7638888888888888, 'F1_S': 0.8146560124732021}
+
+Processing: EditedNearestNeighbours
+{'Method': 'EditedNearestNeighbours', 'Accuracy': 0.7372835497835498, 'Precision_R': 0.49595885378398236, 'Recall_R': 0.703125, 'F1_R': 0.5816458423093495, 'Precision_S': 0.8779443254817987, 'Recall_S': 0.7492690058479532, 'F1_S': 0.8085190297771643}
+
+Processing: RepeatedEditedNearestNeightbours
+{'Method': 'RepeatedEditedNearestNeightbours', 'Accuracy': 0.6672077922077922, 'Precision_R': 0.425, 'Recall_R': 0.796875, 'F1_R': 0.5543478260869565, 'Precision_S': 0.8971518987341772, 'Recall_S': 0.6217105263157895, 'F1_S': 0.7344559585492227}
+
+Processing: AIIKNN
+{'Method': 'AIIKNN', 'Accuracy': 0.6875, 'Precision_R': 0.4418604651162791, 'Recall_R': 0.771875, 'F1_R': 0.5620022753128555, 'Precision_S': 0.8915304606240714, 'Recall_S': 0.6578947368421053, 'F1_S': 0.7570977917981072}
+
+Processing: InstanceHardnessThreshold
+{'Method': 'InstanceHardnessThreshold', 'Accuracy': 0.6747835497835498, 'Precision_R': 0.43270300333704115, 'Recall_R': 0.8104166666666667, 'F1_R': 0.5641769398114576, 'Precision_S': 0.9041095890410958, 'Recall_S': 0.6271929824561403, 'F1_S': 0.7406128614587829}
+
+Processing: NearMiss
+{'Method': 'NearMiss', 'Accuracy': 0.6128246753246753, 'Precision_R': 0.38242636045931105, 'Recall_R': 0.7979166666666667, 'F1_R': 0.5170435369557881, 'Precision_S': 0.8854105138806851, 'Recall_S': 0.5478801169590644, 'F1_S': 0.6769022352675548}
+
+Processing: NeightbourhoodCleaningRule
+{'Method': 'NeightbourhoodCleaningRule', 'Accuracy': 0.7532467532467533, 'Precision_R': 0.5194174757281553, 'Recall_R': 0.66875, 'F1_R': 0.5846994535519126, 'Precision_S': 0.8707317073170732, 'Recall_S': 0.7828947368421053, 'F1_S': 0.8244803695150116}
+
+Processing: OneSidedSelection
+{'Method': 'OneSidedSelection', 'Accuracy': 0.8011363636363636, 'Precision_R': 0.6279863481228669, 'Recall_R': 0.575, 'F1_R': 0.600326264274062, 'Precision_S': 0.8551650692225772, 'Recall_S': 0.8804824561403509, 'F1_S': 0.8676391139924365}
+
+Processing: Tomeklinks
+{'Method': 'Tomeklinks', 'Accuracy': 0.8008658008658008, 'Precision_R': 0.6275626423690205, 'Recall_R': 0.5739583333333333, 'F1_R': 0.5995647442872688, 'Precision_S': 0.85486160397445, 'Recall_S': 0.8804824561403509, 'F1_S': 0.867482895210659}

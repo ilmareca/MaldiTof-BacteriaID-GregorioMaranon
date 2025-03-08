@@ -47,7 +47,7 @@ X_train, X_test, y_train, y_test = train_test_split(X_filtered, labels, test_siz
 
 # Define XGBoost model with specific hyperparameters
 xgb_model = xgb.XGBClassifier(
-    n_estimators=800,
+    n_estimators=500,
     max_depth=3,
     learning_rate=0.1,
     objective='binary:logistic',

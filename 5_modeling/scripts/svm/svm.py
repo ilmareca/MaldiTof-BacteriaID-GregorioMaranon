@@ -46,7 +46,7 @@ X_filtered = df_filtered.drop(columns=['extern_id', antibiotic]).values
 X_train, X_test, y_train, y_test = train_test_split(X_filtered, labels, test_size=0.35, random_state=42, stratify=labels)
 
 # Define SVM model with specific hyperparameters
-svm_model = SVC(kernel='rbf', C=1.0, gamma='scale', random_state=42)
+svm_model = SVC(kernel='rbf', C=3.0, gamma=0.1, random_state=42, verbose=True)
 
 # Train the model
 svm_model.fit(X_train, y_train)

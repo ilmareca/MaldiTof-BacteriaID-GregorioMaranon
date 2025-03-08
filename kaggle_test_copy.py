@@ -1,14 +1,16 @@
 import os
 import joblib
 import pandas as pd
-from imblearn.over_sampling import RandomOverSampler
-from sklearn.linear_model import LogisticRegression
+from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import classification_report, accuracy_score
 from sklearn.model_selection import train_test_split
+from sklearn.feature_selection import RFECV
+from sklearn.neighbors import KNeighborsClassifier
+
 
 # Define paths
 preprocessed_dir = '/export/usuarios01/ilmareca/github/MaldiTof-BacteriaID-GregorioMaranon/3_data_preprocessing/scripts/outputs'
-grid_search_results_file = os.path.join('/export/usuarios01/ilmareca/github/MaldiTof-BacteriaID-GregorioMaranon/5_modeling/scripts/logistic_regression/outputs', 'oversampling_logistic_regression_results.csv')
+grid_search_results_file = os.path.join('/export/usuarios01/ilmareca/github/MaldiTof-BacteriaID-GregorioMaranon', 'kaggle_test3.csv')
 os.makedirs(os.path.dirname(grid_search_results_file), exist_ok=True)
 X_path = os.path.join(preprocessed_dir, 'X_klebsiella.pkl')
 y_path = os.path.join(preprocessed_dir, 'y_klebsiella.pkl')
@@ -44,36 +46,32 @@ labels = df_filtered[antibiotic].map({'R': 0, 'S': 1}).values
 X_filtered = df_filtered.drop(columns=['extern_id', antibiotic]).values
 
 # Split the data into training and test sets
-X_train, X_test, y_train, y_test = train_test_split(X_filtered, labels, test_size=0.35, random_state=42, stratify=labels)
+X_train, X_test, y_train, y_test = train_test_split(X_filtered, labels, test_size=0.4, random_state=42, stratify=labels)
 
-# Aplicar Oversampling a la clase minoritaria en el conjunto de entrenamiento
-oversample = RandomOverSampler(random_state=42)
-X_train_resampled, y_train_resampled = oversample.fit_resample(X_train, y_train)
+# Define Random Forest model with specific hyperparameters
+seed = 42
+rf = RandomForestClassifier(n_estimators=100, random_state=seed, n_jobs=-1)
 
-# Verificar la distribución después de Oversampling
-print("Distribución después de Oversampling:")
-print(pd.Series(y_train_resampled).value_counts())
+# Apply RFE with cross-validation
+rfe = RFECV(estimator=rf, cv=5, step=0.1, n_jobs=-1, min_features_to_select=96)
+rfe.fit(X_train, y_train)
 
-# Definir modelo de Logistic Regression con hiperparámetros específicos
-log_reg_model = LogisticRegression(
-    C=1000, 
-    max_iter=100, 
-    penalty='l1', 
-    solver='liblinear',
-    random_state=42
-)
+# Select the best features
+X_train_rfe = rfe.transform(X_train)
+X_test_rfe = rfe.transform(X_test)
 
-# Entrenar el modelo con el conjunto balanceado
-log_reg_model.fit(X_train_resampled, y_train_resampled)
+# Train the Random Forest model with the selected features
+rf_model = RandomForestClassifier(n_estimators=1, max_depth=None, random_state=seed, n_jobs=-1)
+knn = KNeighborsClassifier(n_neighbors=7)
+knn.fit(X_train_rfe, y_train)
+# Make predictions
+y_pred = knn.predict(X_test_rfe)
 
-# Hacer predicciones
-y_pred = log_reg_model.predict(X_test)
-
-# Evaluar el modelo
+# Evaluate the model
 accuracy = accuracy_score(y_test, y_pred)
 report = classification_report(y_test, y_pred, target_names=['R', 'S'], output_dict=True)
 
-# Guardar resultados
+# Save results
 results = {
     'Accuracy': accuracy,
     'Precision_R': report['R']['precision'],
@@ -84,7 +82,7 @@ results = {
     'F1_S': report['S']['f1-score']
 }
 
-# Guardar resultados en un CSV
+# Save results to CSV
 results_df = pd.DataFrame([results])
 results_df.to_csv(grid_search_results_file, index=False)
 

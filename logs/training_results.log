@@ -1,0 +1,70 @@
+
+KNN Results:
+Accuracy: 0.7656
+Precision R: 0.6171
+Recall R: 0.2571
+F1 R: 0.3629
+Precision S: 0.7836
+Recall S: 0.9440
+F1 S: 0.8564
+--------------------------------------------
+
+GaussianNB Results:
+Accuracy: 0.7412
+Precision R: 0.5028
+Recall R: 0.3318
+F1 R: 0.3998
+Precision S: 0.7906
+Recall S: 0.8849
+F1 S: 0.8351
+--------------------------------------------
+
+SVM Results:
+Accuracy: 0.7884
+Precision R: 0.8202
+Recall R: 0.2370
+F1 R: 0.3678
+Precision S: 0.7858
+Recall S: 0.9818
+F1 S: 0.8729
+--------------------------------------------
+
+DecisionTree Results:
+Accuracy: 0.7045
+Precision R: 0.4346
+Recall R: 0.4576
+F1 R: 0.4458
+Precision S: 0.8061
+Recall S: 0.7912
+F1 S: 0.7986
+--------------------------------------------
+
+RandomForest Results:
+Accuracy: 0.7959
+Precision R: 0.8167
+Recall R: 0.2762
+F1 R: 0.4128
+Precision S: 0.7939
+Recall S: 0.9783
+F1 S: 0.8765
+--------------------------------------------
+
+XGBoost Results:
+Accuracy: 0.8037
+Precision R: 0.7081
+Recall R: 0.4157
+F1 R: 0.5238
+Precision S: 0.8209
+Recall S: 0.9399
+F1 S: 0.8764
+--------------------------------------------
+
+DNN Results:
+Accuracy: 0.7403
+Precision R: 0.0000
+Recall R: 0.0000
+F1 R: 0.0000
+Precision S: 0.7403
+Recall S: 1.0000
+F1 S: 0.8508
+--------------------------------------------
